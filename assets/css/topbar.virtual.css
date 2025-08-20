@@ -109,15 +109,24 @@
 
 .page-home h1 {
   font-size: 50px;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8), 0 0 20px rgba(0, 0, 0, 0.6);
+  font-weight: 700;
+}
+
+.page-home h5 {
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8), 0 0 10px rgba(0, 0, 0, 0.6);
+  font-weight: 500;
 }
 
 .page-home .badge {
   padding: 16px 24px;
-  background-color: rgba(239, 56, 36, 0.15);
-  color: #EF3724;
-  text-shadow: 0 2px 4px rgba(23, 25, 37, 0.4);
+  background-color: rgba(239, 56, 36, 0.9);
+  color: #fff;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
   font-size: 16px;
   border-radius: 40px;
+  font-weight: 600;
+  border: 2px solid rgba(255, 255, 255, 0.3);
 }
 
 .page-home .floating-button {
