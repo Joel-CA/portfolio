@@ -184,18 +184,28 @@
   height: 100%;
   object-fit: cover;
   transition: opacity 0.3s ease;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.hover-image-container .default-image {
+  z-index: 2;
+  opacity: 1;
 }
 
 .hover-image-container .hover-image {
+  z-index: 1;
   opacity: 0;
 }
 
 .hover-image-container:hover .default-image {
   opacity: 0;
+  z-index: 1;
 }
 
 .hover-image-container:hover .hover-image {
   opacity: 1;
+  z-index: 2;
 }
 
 .timeline {
