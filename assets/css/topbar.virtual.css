@@ -171,6 +171,33 @@
   z-index: -1;
 }
 
+.hover-image-container {
+  position: relative;
+}
+
+.hover-image-container .default-image,
+.hover-image-container .hover-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.3s ease;
+}
+
+.hover-image-container .hover-image {
+  opacity: 0;
+}
+
+.hover-image-container:hover .default-image {
+  opacity: 0;
+}
+
+.hover-image-container:hover .hover-image {
+  opacity: 1;
+}
+
 .timeline {
   position: relative;
   display: block;
