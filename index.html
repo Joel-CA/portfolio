@@ -32,6 +32,66 @@
   <link rel="stylesheet" type="text/css" href="assets/css/virtual.css">
 
   <link rel="stylesheet" type="text/css" href="assets/css/topbar.virtual.css">
+  <style>
+    /* Inverted hover effects for Project 5 images:
+       - anogram image starts rotated 180deg and un-rotates on hover
+       - hybrid image starts very small and expands to fill when its container is hovered */
+    .anogram-img {
+      display: inline-block;
+      transform-origin: center;
+      transform: rotate(180deg);
+      transition: transform 0.8s ease;
+      cursor: pointer;
+    }
+    .anogram-container:hover .anogram-img,
+    .anogram-img:hover {
+      transform: rotate(0deg);
+    }
+
+    .hybrid-img {
+      display: inline-block;
+      transform-origin: center;
+      transform: scale(0.08);
+      transition: transform 1.35s ease;
+      cursor: pointer;
+      max-width: 100%;
+      height: auto;
+    }
+    .hybrid-container {
+      display: inline-block;
+    }
+    .hybrid-container:hover .hybrid-img {
+      transform: scale(1);
+    }
+    /* mc image: default shows minecraft.webp, hover shows mc20 (1).png */
+    .mc-container {
+      position: relative;
+      display: inline-block;
+      width: 300px;
+      height: auto;
+      overflow: hidden;
+      text-align: center;
+    }
+    .mc-container img.mc-default,
+    .mc-container img.mc-hover {
+      display: block;
+      width: 100%;
+      height: auto;
+      transition: opacity 0.25s ease;
+    }
+    .mc-container img.mc-hover {
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+    }
+    .mc-container:hover img.mc-hover {
+      opacity: 1;
+    }
+    .mc-container:hover img.mc-default {
+      opacity: 0;
+    }
+  </style>
 </head>
 
 <body class="theme-purple">
@@ -280,6 +340,60 @@
       -->
 
         <div class="gridder my-3">
+          <!--CS180 Project 5: Diffusion Models! -->
+          <div class="grid-item graphics wow zoomIn">
+            <div class="img-place" data-src="assets/img/work/cs180_proj5_imgs/pic_w_kanazawa_transition_to_infill.gif" data-fancybox
+              data-caption="
+                <h5 class='fg-theme'>Project 5: Fun with Diffusion Models!</h5>
+                <p>Python, PyTorch</p>
+                <p class='description'>Explorations in diffusion and flow-matching generative models, image infill and class-conditioned sampling.</p>
+                <table style='margin: 0 auto; border-collapse: collapse;'>
+                  <tbody>
+                    <tr>
+                      <td style='text-align: center; padding: 0 10px;'>
+                        <img src='assets\img\work\cs180_proj5_imgs\FM_learned_MNIST.gif' style='width: 300px;'>
+                        <figcaption>Flow Mathing learning over epochs</figcaption>
+                      </td>
+                      <td class='hybrid-container' style='text-align: center; padding: 0 10px;'>
+                        <img class='hybrid-img' src='assets/img/work/cs180_proj5_imgs/cat+man-hybrid (1).png' style='width: 300px;'>
+                        <figcaption>Multi-conditioned, Diffusion, hybrid illusions</figcaption>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class='anogram-container' style='text-align: center; padding: 0 10px;'>
+                        <img class='anogram-img' src='assets/img/work/cs180_proj5_imgs/fox+mountains-anogram (1).png' style='width: 300px;'>
+                        <figcaption>Multi-conditioned, Diffusion, anogram illusions</figcaption>
+                      </td>
+                      <td class='mc-container' style='text-align: center; padding: 0 10px;'>
+                        <img class='mc-default' src='assets/img/work/cs180_proj5_imgs/minecraft.webp' style='width: 300px;'>
+                        <img class='mc-hover' src='assets/img/work/cs180_proj5_imgs/mc20 (1).png' style='width: 300px;'>
+                        <figcaption>Stylystic minimal noise Diffusion</figcaption>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div style='margin-bottom: 1.5em; margin-top: 1em;'>
+                  <p>Features:</p>
+                  <ul style='text-align: left; list-style-position: inside; margin: 0 auto; display: inline-block;'>
+                    <li>Image infill and conditional sampling experiments.</li>
+                    <li>Label + time conditioned Flow matching models trained from scratch.</li>
+                    <li>Class-conditioned generation and interpolations.</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <p>Read the full project page and view more artifacts:</p>
+                  <a href='https://joel-ca.github.io/CS180/project5/' target='_blank' rel='noopener noreferrer' class='fancybox-link' style='display: inline-block; margin-bottom: 1em;'>Project Page</a>
+                  <a href='https://joel-ca.github.io/CS180/' target='_blank' rel='noopener noreferrer' class='fancybox-link' style='display: inline-block; margin-bottom: 1em;'>Joel's CS180 Projects</a>
+                </div>">
+              <img src="assets/img/work/cs180_proj5_imgs/pic_w_kanazawa_transition_to_infill.gif" alt="">
+              <div class="img-caption">
+                <h5 class="fg-theme">Diffusion/FM (from scratch)</h5>
+                <p>Python, PyTorch</p>
+              </div>
+            </div>
+          </div>
+
           <!--CS180 Project 4: NeRF-->
           <div class="grid-item graphics wow zoomIn">
             <div class="img-place" data-src="assets\img\work\cs180_proj4_imgs\lafufu_nerf_thumnail.gif" data-fancybox
