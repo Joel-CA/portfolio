@@ -9,7 +9,7 @@ const Hero = () => {
       transition={{ duration: 0.8 }}
       className="relative min-h-screen flex items-center justify-center pt-16 pb-20"
       style={{
-        backgroundImage: 'url(/assets/img/Joel_Portfolio_Background.png)',
+        backgroundImage: 'url(./assets/img/Joel_Portfolio_Background.png)',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundAttachment: 'fixed',
