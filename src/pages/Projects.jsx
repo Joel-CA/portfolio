@@ -16,7 +16,7 @@ const Projects = () => {
       image: '/assets/img/work/cs180_proj5_imgs/pic_w_kanazawa_transition_to_infill.gif',
       description: 'Explorations in diffusion and flow-matching generative models, image infill and class-conditioned sampling.',
       tech: 'Python, PyTorch',
-      category: 'graphics',
+      category: 'tools',
       links: [
         { text: 'Project Page', url: 'https://joel-ca.github.io/CS180/project5/' },
         { text: "Joel's CS180 Projects", url: 'https://joel-ca.github.io/CS180/' },
@@ -35,7 +35,7 @@ const Projects = () => {
       image: '/assets/img/work/cs180_proj4_imgs/lafufu_nerf_thumnail.gif',
       description: 'Implementation of Neural Radiance Fields for 3D scene reconstruction from multi-view images.',
       tech: 'Python, PyTorch',
-      category: 'graphics',
+      category: 'tools',
       links: [
         { text: 'Project Writeup', url: 'https://joel-ca.github.io/CS180/project4/' },
         { text: "Joel's CS180 Projects", url: 'https://joel-ca.github.io/CS180/' },
