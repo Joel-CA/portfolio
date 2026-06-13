@@ -1,0 +1,1313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Joel Castro's Portfolio - Computer Science at UC Berkeley">
+  <meta name="copyright" content="Joel Castro">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="shortcut icon" href="assets/img/logo/cat_at_computer.ico" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.4/css/academicons.min.css">
+  <title>Joel's Portfolio</title>
+  <style>
+    /* Inverted hover effects for Project 5 images:
+       - anogram image starts rotated 180deg and un-rotates on hover
+       - hybrid image starts very small and expands to fill when its container is hovered */
+    .anogram-img {
+      display: inline-block;
+      transform-origin: center;
+      transform: rotate(180deg);
+      transition: transform 0.8s ease;
+      cursor: pointer;
+    }
+    .anogram-container:hover .anogram-img,
+    .anogram-img:hover {
+      transform: rotate(0deg);
+    }
+
+    .hybrid-img {
+      display: inline-block;
+      transform-origin: center;
+      transform: scale(0.08);
+      transition: transform 1.35s ease;
+      cursor: pointer;
+      max-width: 100%;
+      height: auto;
+    }
+    .hybrid-container {
+      display: inline-block;
+    }
+    .hybrid-container:hover .hybrid-img {
+      transform: scale(1);
+    }
+    /* mc image: default shows minecraft.webp, hover shows mc20 (1).png */
+    .mc-container {
+      position: relative;
+      display: inline-block;
+      width: 300px;
+      height: auto;
+      overflow: hidden;
+      text-align: center;
+    }
+    .mc-container img.mc-default,
+    .mc-container img.mc-hover {
+      display: block;
+      width: 100%;
+      height: auto;
+      transition: opacity 0.25s ease;
+    }
+    .mc-container img.mc-hover {
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+    }
+    .mc-container:hover img.mc-hover {
+      opacity: 1;
+    }
+    .mc-container:hover img.mc-default {
+      opacity: 0;
+    }
+  </style>
+</head>
+
+<body class="theme-purple">
+
+  <!-- Back to top button -->
+  <div class="btn-back_to_top">
+    <span class="ti-arrow-up"></span>
+  </div>
+
+  <div class="vg-page page-home" id="home" style="background-image: url(assets/img/Joel_Portfolio_Background.png)">
+    <!--Navbar -->
+    <div class="navbar navbar-expand-lg navbar-dark sticky" data-offset="500">
+      <div class="container">
+        <a href="" class="navbar-brand">Joel's Portfolio</a>
+        <button class="navbar-toggler" data-toggle="collapse" data-target="#main-navbar" aria-expanded="true">
+          <span class="ti-menu"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="main-navbar">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a href="#home" class="nav-link" data-animate="scrolling">Home</a>
+            </li>
+            <li class="nav-item">
+              <a href="#about" class="nav-link" data-animate="scrolling">About</a>
+            </li>
+            <li class="nav-item">
+              <a href="#publications" class="nav-link" data-animate="scrolling">Publications</a>
+            </li>
+            <li class="nav-item">
+              <a href="#projects" class="nav-link" data-animate="scrolling">Projects</a>
+            </li>
+            <li class="nav-item">
+              <a href="#contact" class="nav-link" data-animate="scrolling">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!-- End Navbar -->
+    <!-- Caption header -->
+    <div class="caption-header text-center wow zoomInDown">
+      <h5 class="fw-normal">Welcome</h5>
+      <h1 class="fw-light mb-4">I'm <b class="fg-theme">Joel</b>!</h1>
+      <div class="badge">CS Undergraduate @UC Berkeley</div>
+    </div> <!-- End Caption header -->
+    <!-- <div class="floating-button"><span class="ti-mouse"></span></div> -->
+  </div>
+
+  <div class="vg-page page-about" id="about">
+    <div class="container py-5">
+      <div class="row">
+        <div class="col-lg-3 py-2">
+          <div class="img-place wow fadeInUp hover-image-container">
+            <img src="assets/img/SURF Portrait Square (softbox lighting).png" alt="Joel Castro Portrait" class="default-image">
+            <img src="assets\img\Joel_halloween_costume_25.png" alt="Joel Pines Selfie" class="hover-image">
+          </div>
+        </div>
+        <div class="col-lg-6 offset-lg-1 wow fadeInRight">
+          <h1 class="fw-light">Joel Castro</h1>
+          <h5 class="fg-theme mb-3"></h5>
+          <p class="text-muted">I'm a fourth-year at UC Berkeley, majoring in computer science. My passions and
+            interests lie in the realm of computer graphics, robotics, computer vision, simulations, and in particular,
+            the overlap these arenas have with animation, film, video games, and AR/VR.</p>
+          <ul class="theme-list">
+            <li><b>From:</b> San Diego, CA</li>
+            <li><b>Age:</b> 21</li>
+            <li><b>Pronouns:</b> He/Him/His</li>
+            <li><b>Cat dad of:</b> Milo, Mitchu, Sol, Rumi, and Cowboy</li>
+          </ul>
+          <a href="assets/resumes/Joel Castro - Tech Resume (8_24_25).pdf" class="btn btn-theme-outline"
+            download="Joel_Castro_Resume.pdf">Download Resume</a>
+          <a href='https://joel-ca.github.io/JoelsCatShowcaser/' target='_blank' rel='noopener noreferrer'
+            class='btn btn-theme-outline'>Cat Showcaser</a>
+          <!--button class="btn btn-theme-outline">Download Resume</button-->
+        </div>
+      </div>
+    </div>
+
+    <!-- Publications Section -->
+    <div class="vg-page page-publications" id="publications">
+      <div class="container">
+        <div class="text-center wow fadeInUp">
+          <div class="badge badge-subhead">Publications</div>
+          <h1 class="text-center fw-normal wow fadeInUp">Research & Publications</h1>
+
+          <!-- Academic Profile Links -->
+          <div class="mt-2">
+            <a href="https://scholar.google.com/citations?user=6vb9oD4AAAAJ" target="_blank"
+              rel="noopener noreferrer">Google Scholar</a> |
+            <a href="https://dl.acm.org/profile/99661387609" target="_blank" rel="noopener noreferrer">ACM Profile</a> |
+            <a href="https://orcid.org/0000-0002-8759-4678" target="_blank" rel="noopener noreferrer">ORCID</a>
+          </div>
+        </div>
+
+        <!-- ✅ Add row wrapper here -->
+        <div class="row mt-4">
+
+          <!-- Publication Card, REAL -->
+          <div class="col-md-6 col-lg-4 mb-4 wow fadeInUp">
+            <div class="card h-100 shadow-sm">
+              <div class="card-body">
+                <h5 class="card-title fg-theme">[Title TBD]</h5>
+                <p class="card-text">
+                  <b>Authors:</b> Austin Patel, <em>Joel E. Castro Hernandez</em>, Shuran Song<br>
+                  <b>Venue:</b> TBD<br>
+                  <b>Status:</b> Draft<br>
+                </p>
+                <p class="card-text text-muted">[Abstract TBD].</p>
+                <!-- Links -->
+                <div class="text-center">
+                  <a href="#" class="btn btn-theme-outline btn-sm disabled" tabindex="-1" aria-disabled="true">Paper
+                    Coming Soon</a>
+                  <a href="#" class="btn btn-theme-outline btn-sm mb-1 disabled" tabindex="-1" aria-disabled="true">
+                    Conference Page Coming Soon
+                  </a>
+                </div>
+              </div>
+
+              <!-- Poster Subsection -->
+              <div class="card-body border-top pt-3">
+                <h6 class="text-muted">Associated Poster</h6>
+                <img src="assets/Posters/Teaching Robots to Write Preview.png" alt="Poster Thumbnail"
+                  class="img-fluid rounded mb-2">
+                <div class="text-center">
+                  <a href="assets/Posters/REAL Labs - Teaching Robots to Write (SURF & SEED versions).pdf" target="_blank"
+                    rel="noopener noreferrer" class="btn btn-theme-outline btn-sm">View Poster</a>
+                  <a href="https://youtu.be/6p_m_byNkXs?si=cVlmHBuHn--0y3HV" target="_blank"
+                    rel="noopener noreferrer" class="btn btn-theme-outline btn-sm">Lightning Talk Presentation</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- End Publication Card, REAL -->
+
+          <!-- Publication Card, SPLASH -->
+          <div class="col-md-6 col-lg-4 mb-4 wow fadeInUp">
+            <div class="card h-100 shadow-sm">
+              <div class="card-body">
+                <h5 class="card-title fg-theme">Understanding Program Visualizations in the Wild</h5>
+                <p class="card-text">
+                  <b>Authors:</b> <em>Joel E. Castro Hernandez</em>, Olohi Goodness John<br>
+                  <b>Venue:</b> SPLASH, 2024<br>
+                  <b>Status:</b> Published<br>
+                </p>
+                <p class="card-text text-muted">
+                  Visualizations play a significant role in writing, debugging, profiling, and generally understanding
+                  programs. However, little work has been done to understand the structure of program visualizations at
+                  a fundamental level— namely, why and how they scale. In this paper we present a theory of the
+                  interpretability of program visualizations focused on their abstraction and composition properties.
+                </p>
+                <!-- Links -->
+                <div class="text-center">
+                  <a href="https://dl.acm.org/doi/pdf/10.1145/3689491.3689975" target="_blank" rel="noopener noreferrer"
+                    class="btn btn-theme-outline btn-sm mb-1">View Paper</a>
+                  <a href="https://2024.splashcon.org/details/splash-2024-SRC/10/Understanding-Program-Visualizations-in-the-Wild"
+                    target="_blank" rel="noopener noreferrer" class="btn btn-theme-outline btn-sm mb-1">SPLASH Page</a>
+                  <a href="https://dl.acm.org/doi/abs/10.1145/3689491.3689975" target="_blank" rel="noopener noreferrer"
+                    class="btn btn-theme-outline btn-sm mb-1">ACM Digital Library</a>
+                </div>
+              </div>
+
+              <!-- Poster Subsection-->
+              <div class="card-body border-top pt-3">
+                <h6 class="text-muted">Associated Poster</h6>
+                <img src="assets/Posters/Understanding Program Visualizations In The Wild Preview.png"
+                  alt="Poster Thumbnail" class="img-fluid rounded mb-2">
+                <div class="text-center">
+                  <a href="assets/Posters/Understanding Program Visualizations in the Wild Poster (REUSE & SPLASH Versions).pdf"
+                    target="_blank" rel="noopener noreferrer" class="btn btn-theme-outline btn-sm">View Poster</a>
+                </div>
+              </div>
+
+              <!-- Awards Subsection -->
+              <div class="card-footer bg-white border-0 pt-0">
+                <small class="text-success">
+                  <span class="ti-medall"></span>
+                  Selected for <strong>Poster & Oral Presentations</strong> at <strong>SPLASH</strong>
+                </small>
+                <br>
+                <small class="text-success">
+                  <span class="ti-medall"></span>
+                  Selected for <strong>Poster Presentation</strong> at <strong>SACNAS</strong>
+                </small>
+              </div>
+            </div>
+          </div>
+          <!-- End Publication Card, SPLASH -->
+
+          <!-- Publication Card, Biophysical Neural Networks -->
+          <div class="col-md-6 col-lg-4 mb-4 wow fadeInUp">
+            <div class="card h-100 shadow-sm">
+              <div class="card-body">
+                <h5 class="card-title fg-theme">Interpretable biophysical neural networks of transcriptional activation domains separate roles of protein abundance and coactivator binding</h5>
+                <p class="card-text">
+                  <b>Authors:</b> Claire LeBlanc, Pooja Agarwal, Jack Demaray, Gean Hu, Marissa Zintel, Angelica Lam, <em>Joel E. Castro Hernandez</em>, Max Staller<br>
+                  <b>Journal:</b> Cell Press<br>
+                  <b>Status:</b> Under Review (Preprint)<br>
+                </p>
+                <p class="card-text text-muted">
+                  Deep neural networks have improved biological prediction accuracy, but interpretation remains challenging. We designed simple neural networks incorporating biophysical models of transcriptional activation domains. These networks revealed how hydrophobic residues increase activation strength while decreasing protein abundance, and how acidic residues control both parameters. Combining biophysical and deep neural networks maximizes prediction accuracy and interpretability to yield insights into biological mechanisms.
+                </p>
+                <!-- Links -->
+                <div class="text-center">
+                  <a href="https://www.biorxiv.org/content/10.1101/2025.09.19.677413v1.full.pdf" target="_blank" rel="noopener noreferrer"
+                    class="btn btn-theme-outline btn-sm mb-1">View Paper</a>
+                  <a href="https://www.biorxiv.org/content/10.1101/2025.09.19.677413v1" target="_blank" rel="noopener noreferrer" 
+                    class="btn btn-theme-outline btn-sm mb-1">bioRxiv</a>
+                  <a href="https://pubmed.ncbi.nlm.nih.gov/41000786/" target="_blank" rel="noopener noreferrer"
+                    class="btn btn-theme-outline btn-sm mb-1">NIH PubMed Page</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- End Publication Card, Biophysical Neural Networks -->
+
+        </div>
+        <!-- ✅ End row wrapper -->
+      </div>
+    </div>
+    <!-- End Publications Section -->
+
+    <!-- Projects page -->
+    <div class="vg-page page-projects" id="projects">
+      <div class="container">
+        <div class="text-center wow fadeInUp">
+          <div class="badge badge-subhead">Projects</div>
+        </div>
+        <h1 class="text-center fw-normal wow fadeInUp">See my work!</h1>
+        <div class="filterable-button py-3 wow fadeInUp" data-toggle="selected">
+          <button class="btn btn-theme-outline selected" data-filter="*">All</button>
+          <button class="btn btn-theme-outline" data-filter=".games">Games</button>
+          <button class="btn btn-theme-outline" data-filter=".graphics">Graphics</button>
+          <button class="btn btn-theme-outline" data-filter=".tools">Tools</button>
+          <button class="btn btn-theme-outline" data-filter=".animation">Animation</button>
+          <button class="btn btn-theme-outline" data-filter=".film">Film</button>
+        </div>
+
+        <!--fancybox elements:-->
+        <!--
+      stick insdie of data-caption:
+      <a href='https://example.com' target='_blank' rel='noopener noreferrer' class='fancybox-link'>More Info</a>
+
+      <div class='video-wrapper'><iframe width='560' height='315' src='https://www.youtube.com/embed/your_video_id' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe></div>
+
+      <p class='description'>This is a brief description about the video or content that provides additional context or details.</p>
+      -->
+
+        <div class="gridder my-3">
+          <!--CS180 Project 5: Diffusion Models! -->
+          <div class="grid-item graphics wow zoomIn">
+            <div class="img-place" data-src="assets/img/work/cs180_proj5_imgs/pic_w_kanazawa_transition_to_infill.gif" data-fancybox
+              data-caption="
+                <h5 class='fg-theme'>Project 5: Fun with Diffusion Models!</h5>
+                <p>Python, PyTorch</p>
+                <p class='description'>Explorations in diffusion and flow-matching generative models, image infill and class-conditioned sampling.</p>
+                <table style='margin: 0 auto; border-collapse: collapse;'>
+                  <tbody>
+                    <tr>
+                      <td style='text-align: center; padding: 0 10px;'>
+                        <img src='assets\img\work\cs180_proj5_imgs\FM_learned_MNIST.gif' style='width: 300px;'>
+                        <figcaption>Flow Mathing learning over epochs</figcaption>
+                      </td>
+                      <td class='hybrid-container' style='text-align: center; padding: 0 10px;'>
+                        <img class='hybrid-img' src='assets/img/work/cs180_proj5_imgs/cat+man-hybrid (1).png' style='width: 300px;'>
+                        <figcaption>Multi-conditioned, Diffusion, hybrid illusions</figcaption>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class='anogram-container' style='text-align: center; padding: 0 10px;'>
+                        <img class='anogram-img' src='assets/img/work/cs180_proj5_imgs/fox+mountains-anogram (1).png' style='width: 300px;'>
+                        <figcaption>Multi-conditioned, Diffusion, anogram illusions</figcaption>
+                      </td>
+                      <td class='mc-container' style='text-align: center; padding: 0 10px;'>
+                        <img class='mc-default' src='assets/img/work/cs180_proj5_imgs/minecraft.webp' style='width: 300px;'>
+                        <img class='mc-hover' src='assets/img/work/cs180_proj5_imgs/mc20 (1).png' style='width: 300px;'>
+                        <figcaption>Stylystic minimal noise Diffusion</figcaption>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div style='margin-bottom: 1.5em; margin-top: 1em;'>
+                  <p>Features:</p>
+                  <ul style='text-align: left; list-style-position: inside; margin: 0 auto; display: inline-block;'>
+                    <li>Image infill and conditional sampling experiments.</li>
+                    <li>Label + time conditioned Flow matching models trained from scratch.</li>
+                    <li>Class-conditioned generation and interpolations.</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <p>Read the full project page and view more artifacts:</p>
+                  <a href='https://joel-ca.github.io/CS180/project5/' target='_blank' rel='noopener noreferrer' class='fancybox-link' style='display: inline-block; margin-bottom: 1em;'>Project Page</a>
+                  <a href='https://joel-ca.github.io/CS180/' target='_blank' rel='noopener noreferrer' class='fancybox-link' style='display: inline-block; margin-bottom: 1em;'>Joel's CS180 Projects</a>
+                </div>">
+              <img src="assets/img/work/cs180_proj5_imgs/pic_w_kanazawa_transition_to_infill.gif" alt="">
+              <div class="img-caption">
+                <h5 class="fg-theme">Diffusion/FM (from scratch)</h5>
+                <p>Python, PyTorch</p>
+              </div>
+            </div>
+          </div>
+
+          <!--CS180 Project 4: NeRF-->
+          <div class="grid-item graphics wow zoomIn">
+            <div class="img-place" data-src="assets\img\work\cs180_proj4_imgs\lafufu_nerf_thumnail.gif" data-fancybox
+              data-caption="
+                <h5 class='fg-theme'>NeRF (from scratch)</h5> 
+                <p>Python, PyTorch</p>
+                <p class='description'>
+                  Implementation of Neural Radiance Fields for 3D scene reconstruction from multi-view images, 
+                  including camera calibration, ray sampling, volume rendering, and novel view synthesis.
+                </p>
+                <table style='margin: 0 auto; border-collapse: collapse;'>
+                  <tbody>
+                    <tr>
+                      <td style='text-align: center; padding: 0 10px;'>
+                        <img src='assets\img\work\cs180_proj4_imgs\lego_200x200.gif' style='width: 300px;'>
+                        <figcaption>Lego Scene Reconstruction (view 1)</figcaption>
+                      </td>
+                      <td style='text-align: center; padding: 0 10px;'>
+                        <img src='assets\img\work\cs180_proj4_imgs\lego_200x200(1).gif' style='width: 300px;'>
+                        <figcaption>Lego Scene Reconstruction (view 2)</figcaption>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style='text-align: center; padding: 0 10px;'>
+                        <img src='assets\img\work\cs180_proj4_imgs\viser_plot.png' style='width: 300px;'>
+                        <figcaption>Camera Frustum Visualization</figcaption>
+                      </td>
+                      <td style='text-align: center; padding: 0 10px;'>
+                        <img src='assets\img\work\cs180_proj4_imgs\2D_NeRF_Reconstruction.png' style='width: 300px;'>
+                        <figcaption>2D Neural Field Reconstruction</figcaption>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div style='margin-bottom: 1.5em;'>
+                  <p>Features:</p>
+                  <ul style='text-align: left; list-style-position: inside; margin: 0 auto; display: inline-block;'>
+                    <li>Camera calibration using ArUco markers.
+                      <ul>
+                        <li>Intrinsics and distortion coefficient estimation.</li>
+                        <li>Camera pose estimation from multi-view captures.</li>
+                      </ul>
+                    </li>
+                    <li>2D neural field fitting with sinusoidal positional encoding.
+                      <ul>
+                        <li>MLP architecture with configurable depth and width.</li>
+                        <li>PSNR-based optimization (reached 22+ dB).</li>
+                      </ul>
+                    </li>
+                    <li>3D Neural Radiance Field implementation.
+                      <ul>
+                        <li>Ray generation from camera parameters.</li>
+                        <li>Stratified ray sampling with perturbation.</li>
+                        <li>View-dependent color prediction.</li>
+                      </ul>
+                    </li>
+                    <li>Volume rendering equation implementation.
+                      <ul>
+                        <li>Discrete approximation of continuous rendering.</li>
+                        <li>Transmittance and opacity computation.</li>
+                      </ul>
+                    </li>
+                    <li>Novel view synthesis.
+                      <ul>
+                        <li>Lego scene: 22.31 dB validation PSNR.</li>
+                        <li>Custom scenes: 20+ dB validation PSNR.</li>
+                      </ul>
+                    </li>
+                  </ul>
+                </div>
+
+                <div>
+                  <p>Read the full project writeup and see more of my CS180 Work:</p>
+                  <a href='https://joel-ca.github.io/CS180/project4/' target='_blank' rel='noopener noreferrer' 
+                    class='fancybox-link' style='display: inline-block; margin-bottom: 1em;'>Project Writeup</a>
+                  <a href='https://joel-ca.github.io/CS180/' target='_blank' rel='noopener noreferrer' 
+                  class='fancybox-link' style='display: inline-block; margin-bottom: 1em;'>Joel's CS180 Projects</a>
+                </div>">
+              <img src="assets\img\work\cs180_proj4_imgs\lafufu_nerf_thumnail.gif" alt="">
+              <div class="img-caption">
+                <h5 class="fg-theme">NeRF (from scratch)</h5>
+                <p>Python, PyTorch</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Anova Space Adventure -->
+          <div class="grid-item games wow zoomIn">
+            <div class="img-place" data-src="assets/img/work/arduino_picture.jpg" data-fancybox data-caption="
+              <h5 class='fg-theme'>Anova Space Adventure</h5> 
+              <p>Processing, Java, Arduino</p>
+              <p class='description'>
+                An endless space flyer for the Arduino joystick! Navigate your jet through an asteroid field. Destroy asteroids and survive! How far can you get?
+              </p>
+              <div class='video-wrapper'>
+                <iframe width='560' height='315' src='https://www.youtube.com/embed/4XButFk4vBE?si=MoSYaD2sVmvRTeli' title='YouTube video player' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share' referrerpolicy='strict-origin-when-cross-origin' allowfullscreen></iframe>
+              </div>
+              <iframe frameborder='0' src='https://itch.io/embed/3594329' width='552' height='167'><a href='https://joel-ca.itch.io/anova-space-adventure'>ANova Space Adventure by Joel-CA</a>
+              </iframe>
+              <p>Read about all the technical nuances and see the code on my GitHub:</p>
+              <a href='https://github.com/Joel-CA/AnovaSpaceAdventure' target='_blank' rel='noopener noreferrer' 
+                 class='fancybox-link' style='display: inline-block; margin-bottom: 1em;'>Github Page
+              </a>
+              ">
+              <img src="assets/img/work/arduino_picture.jpg" alt="">
+              <div class="img-caption">
+                <h5 class="fg-theme">ANova Space Adventure</h5>
+                <p>Processing, Java, Arduino</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Spheres & Physics -->
+          <div class="grid-item games graphics wow zoomIn">
+            <div class="img-place" data-src="assets/img/work/spheres_physics_thumbnnail.jpg" data-fancybox data-caption="
+            <h5 class='fg-theme'>Spheres & Physics</h5>
+            <p>CS184 Spring 2025 - Final Project Honorable Mention</p>
+            <p>Minecraft Fabric Mod, Java</p>
+            <p class='description'>Spheres & Physics, but in Minecraft! We modded Minecraft to introduce two major enhancements: spheres that interacted with physics and custom shaders.</p>
+            <p class='fancy-caption' style='text-align: center; margin-bottom: 0;'>Personal Contributions:               </p>
+            <ul style='text-align: center; list-style-position: inside; margin: 0 auto; display: inline-                  block;'>
+                <li>Procedural sphere model generation</li>
+                <li>Sphere texturing mapping</li>
+                <li>Quaternion-based, physically acurate rotation mechanics</li> 
+                <li>Edited the final video</li>
+                <li>Wrote the final deliverable</li>
+            </ul>
+            <p class='fancy-caption'; style='margin-top: 1em'>Watch Video Presentation here:</p>
+            <div class='video-wrapper'>
+              <iframe width='560' height='315' src='https://www.youtube.com/embed/OcBq2-588C8?si=RvocffTPWgaf895v' title='YouTube video player' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share' referrerpolicy='strict-origin-when-cross-origin' allowfullscreen>
+              </iframe>
+            </div>
+            <div>
+              <a href='https://github.com/jordan-duan/184-final' target='_blank' rel='noopener noreferrer' class='fancybox-link'>Github Page
+              </a>
+            </div>
+            <a href='https://www.curseforge.com/minecraft/mc-mods/spheres-physics' target='_blank' rel='noopener noreferrer' 
+                 class='fancybox-link' style='display: inline-block; margin-bottom: 1em;'> Download .jar on CurseForge
+            </a>
+            <a href='https://www.curseforge.com/minecraft/shaders/spheres-physics-shaders' target='_blank' rel='noopener noreferrer' 
+                   class='fancybox-link' style='display: inline-block; margin-bottom: 1em;'> Download shaders on CurseForge
+            </a>">
+              <img src="assets/img/work/spheres_physics_thumbnnail.jpg" alt="">
+              <div class="img-caption">
+                <h5 class="fg-theme">Sphere & Physics</h5>
+                <p>Minecract Fabric Mod, Java</p>
+              </div>
+            </div>
+          </div>
+
+          <!--CS189 HW4-->
+          <div class="grid-item graphics wow zoomIn">
+            <div class="img-place" data-src="assets/img/work/mirror_shader_clothOnSphere.jpg" data-fancybox
+              data-caption="
+                <h5 class='fg-theme'>Path Tracer</h5> 
+                <p>C++</p>
+                <p class='description'>
+                  This is my implementation of a C++ Path Tracer.
+                </p>
+                <table style='margin: 0 auto; border-collapse: collapse;'>
+                  <tbody>
+                    <tr>
+                      <td style='text-align: center; padding: 0 10px;'>
+                        <img src='assets/img/work/hw4_imgs/cloth-on-sphere-ks500.jpg' style='width: 300px;'>
+                        <figcaption>cloth-on-sphere-ks500</figcaption>
+                      </td>
+                      <td style='text-align: center; padding: 0 10px;'>
+                        <img src='assets/img/work/hw4_imgs/self-collision-middle-density1.jpg' style='width: 300px;'>
+                        <figcaption>self-collision-middle-density1</figcaption>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style='text-align: center; padding: 0 10px;'>
+                        <img src='assets/img/work/hw4_imgs/displacement-16.jpg' style='width: 200px;'>
+                        <figcaption>displacement-16</figcaption>
+                      </td>
+                      <td style='text-align: center; padding: 0 10px;'>
+                        <img src='assets/img/work/hw4_imgs/cloth-grid-default-resting.jpg' style='width: 300px;'>
+                        <figcaption>cloth-grid-default-resting</figcaption>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div style='margin-bottom: 1.5em;'>
+                  <p>Features:</p>
+                  <ul style='text-align: left; list-style-position: inside; margin: 0 auto; display: inline-block;'>
+                    <li>Masses and srings.
+                      <ul>
+                        <li> Structural Constraints.</li>
+                        <li> Shearing Constraints.</li>
+                        <li> Bending constraints.</li>
+                      </ul>
+                    </li>
+                    <li>Simulation via numerical integration.
+                      <ul>
+                        <li>Verlet integration for improved stability.</li>
+                      </ul>
+                    </li>
+                    </li>
+                    <li>Handling collisions with other objects.
+                      <ul>
+                        <li>Ray-sphere intersection testing.</li>
+                        <li>Ray-plane intersect testing.</li>
+                      </ul>
+                    </li>
+                    <li>Handling self-collisions.
+                      <ul>
+                        <li>Spatial (hash) mapping-enabled real-time point-mass-to-point-mass collision detection.</li>
+                        <li>Russian Roulette ray termination.</li>
+                      </ul>
+                    </li>
+                    <li>Shaders.
+                      <ul>
+                        <li>Blinn-Phone shading model.</li>
+                        <li>Bump + Displacement mapping.</li>
+                        <li>HDRi-enabled mirror shader.</li>
+                      </ul>
+                    </li>
+                </div>
+
+                <div>
+                  <p>Read the Webpage writeup:</p>
+                  <a href='https://cal-cs184-student.github.io/joel-castro/hw4/index.html' target='_blank' rel='noopener noreferrer' 
+                     class='fancybox-link' style='display: inline-block; margin-bottom: 1em;'>Webpage Writeup</a>
+                </div>">
+              <img src="assets/img/work/mirror_shader_clothOnSphere.jpg" alt="">
+              <div class="img-caption">
+                <h5 class="fg-theme">Cloth Simulator</h5>
+                <p>C++</p>
+              </div>
+            </div>
+          </div>
+
+          <!--CS189 HW3-->
+          <div class="grid-item graphics wow zoomIn">
+            <div class="img-place" data-src="assets/img/work/RR_m5_bunny.png" data-fancybox data-caption="
+                <h5 class='fg-theme'>Path Tracer</h5> 
+                <p>C++</p>
+                <p class='description'>
+                  This is my implementation of a C++ Path Tracer.
+                </p>
+                <table style='margin: 0 auto; border-collapse: collapse;'>
+                  <tbody>
+                    <tr>
+                      <td style='text-align: center; padding: 0 10px;'>
+                        <img src='assets/img/work/hw3_imgs/maxplanck_bvh.png' style='width: 300px;'>
+                        <figcaption>maxplanck_bvh</figcaption>
+                      </td>
+                      <td style='text-align: center; padding: 0 10px;'>
+                        <img src='assets/img/work/hw3_imgs/banna_1024.png' style='width: 300px;'>
+                        <figcaption>banna_1024</figcaption>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style='text-align: center; padding: 0 10px;'>
+                        <img src='assets/img/work/hw3_imgs/dragon_64_32_rate.png' style='width: 200px;'>
+                        <figcaption>adaptive_sampling_dragon_64_32_rate</figcaption>
+                      </td>
+                      <td style='text-align: center; padding: 0 10px;'>
+                        <img src='assets/img/work/hw3_imgs/CBspheres.png' style='width: 300px;'>
+                        <figcaption>CBspheres</figcaption>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div style='margin-bottom: 1.5em;'>
+                  <p>Features:</p>
+                  <ul style='text-align: left; list-style-position: inside; margin: 0 auto; display: inline-block;'>
+                    <li>Ray Generation and Scene Intersection.
+                      <ul>
+                        <li> World space to screen space tranformations.</li>
+                        <li> Möller–Trumbore intersection algorithm for 3D ray-triangle-point-interseciton.</li>
+                      </ul>
+                    </li>
+                    <li>Bounding Volume Hierarchy (BVH).
+                      <ul>
+                        <li>Median primitive position bounding box splits.</li>
+                        <li>Reduce rendering times (empirically) by over four orders of magnitude.</li>
+                      </ul>
+                    </li>
+                    </li>
+                    <li>Direct Illumination.
+                      <ul>
+                        <li>Hemisphere Direct Ligthing.</li>
+                        <li>Importance Sampling Direct Lighting.</li>
+                      </ul>
+                    </li>
+                    <li>Global Illumination.
+                      <ul>
+                        <li>Indirect Lighting Function utilizing Monte-Carlo Integration.</li>
+                        <li>Russian Roulette ray termination.</li>
+                      </ul>
+                    </li>
+                    <li>Adaptive Sampling.</li>
+                </div>
+
+                <div>
+                  <p>Read the Webpage writeup:</p>
+                  <a href='https://cal-cs184-student.github.io/joel-castro/hw3/index.html' target='_blank' rel='noopener noreferrer' 
+                     class='fancybox-link' style='display: inline-block; margin-bottom: 1em;'>Webpage Writeup</a>
+                </div>">
+              <img src="assets/img/work/RR_m5_bunny.png" alt="">
+              <div class="img-caption">
+                <h5 class="fg-theme">Path Tracer</h5>
+                <p>C++</p>
+              </div>
+            </div>
+          </div>
+
+          <!--CS189 HW2-->
+          <div class="grid-item graphics wow zoomIn">
+            <div class="img-place" data-src="assets/img/work/hw2_imgs/king_clawthorn.gif" data-fancybox data-caption="
+                <h5 class='fg-theme'>Mesh Editor</h5> 
+                <p>C++</p>
+                <p class='description'>
+                  This is my implementation of a C++ Mesh Editor.
+                </p>
+                <table style='margin: 0 auto; border-collapse: collapse;'>
+                  <tr>
+                    <td style='text-align: center; padding: 0 10px;'>
+                      <img src='assets/img/work/hw2_imgs/sect1_part1_completeCurveModified.png' alt='sect1_part1_completeCurveModified' style='width: 90%; max-width: 300px;'>
+                      <p>sect1_part1_completeCurveModified</p>
+                    </td>
+                    <td style='text-align: center; padding: 0 10px;'>
+                      <img src='assets/img/work/hw2_imgs/sect2_part4_after.png' alt='sect2_part4_after' style='width: 90%; max-width: 300px;'>
+                      <p>sect2_part4_after</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style='text-align: center; padding: 0 10px;'>
+                      <img src='assets/img/work/hw2_imgs/sect2_part6_preProsdCubeSubdiv1.png' alt='sect2_part6_preProsdCubeSubdiv1' style='width: 90%; max-width: 300px;'>
+                      <p>sect2_part6_preProsdCubeSubdiv1</p>
+                    </td>
+                    <td style='text-align: center; padding: 0 10px;'>
+                      <img src='assets/img/work/hw2_imgs/sect2_part6_subdiv3.png' alt='sect2_part6_subdiv3' style='width: 90%; max-width: 300px;'>
+                      <p>sect2_part6_subdiv3</p>
+                    </td>
+                  </tr>
+                </table>
+                <div style='margin-bottom: 1.5em;'>
+                  <p>Features:</p>
+                  <ul style='text-align: left; list-style-position: inside; margin: 0 auto; display: inline-block;'>
+                    <li>Bezier Curves and Surfaces.
+                      <ul>
+                        <li> Bezier curves with 1D de Casteljau subdivision.</li>
+                        <li> Bezier surfaces with separable 1D de Casteljau subdivision.</li>
+                      </ul>
+                    </li>
+                    <li>Triangle Meshes and Half-Edge Data Structure.
+                      <ul>
+                        <li>Area-weighted vertex normals.</li>
+                        <li>Edge flip.</li>
+                        <li>Edge split.</li>
+                        <li>Loop subdivision for mesh upsampling.</li>
+                      </ul>
+                    </li>
+                    <li>Art: 3D models King Clawthorn from The Owl House in AutoDesk Maya and rendered in Mesh Editor.</li>
+                </div>
+
+                <div>
+                  <p>Read the Webpage writeup:</p>
+                  <a href='https://cal-cs184-student.github.io/joel-castro/hw2/index.html' target='_blank' rel='noopener noreferrer' 
+                     class='fancybox-link' style='display: inline-block; margin-bottom: 1em;'>Webpage Writeup</a>
+                </div>">
+              <img src="assets/img/work/king_clawthorn.png" alt="">
+              <div class="img-caption">
+                <h5 class="fg-theme">Mesh Editor</h5>
+                <p>C++</p>
+              </div>
+            </div>
+          </div>
+
+          <!--CS189 HW1-->
+          <div class="grid-item graphics
+            wow zoomIn">
+            <div class="img-place" data-src="assets/img/work/joel_cat_art_184.png" data-fancybox data-caption="
+                <h5 class='fg-theme'>Rasterizer</h5> 
+                <p>C++</p>
+                <p class='description'>
+                  This is my implementation of a C++ rasterizer.
+                </p>
+                <table style='margin: 0 auto; border-collapse: collapse;'>
+                  <tr>
+                    <td style='text-align: center; padding: 0 10px;'>
+                      <img src='assets/img/work/hw1_imgs/svg4_sample_rate_4.png' alt='svg4_sample_rate_4' style='width: 90%; max-width: 300px;'>
+                      <p>svg4_sample_rate_4</p>
+                    </td>
+                    <td style='text-align: center; padding: 0 10px;'>
+                      <img src='assets/img/work/hw1_imgs/L_Zero_AND_P_Linear.png' alt='L_Zero_AND_P_Linear' style='width: 90%; max-width: 300px;'>
+                      <p>L_Zero_AND_P_Linear</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style='text-align: center; padding: 0 10px;'>
+                      <img src='assets/img/work/hw1_imgs/barycentric_triangle.png' alt='barycentric_triangle' style='width: 90%; max-width: 300px;'>
+                      <p>barycentric_triangle</p>
+                    </td>
+                    <td style='text-align: center; padding: 0 10px;'>
+                      <img src='assets/img/work/hw1_imgs/bilinear_sampling1.png' alt='bilinear_sampling1' style='width: 90%; max-width: 300px;'>
+                      <p>bilinear_sampling1</p>
+                    </td>
+                  </tr>
+                </table>
+                <div style='margin-bottom: 1.5em;'>
+                  <p>Features:</p>
+                  <ul style='text-align: left; list-style-position: inside; margin: 0 auto; display: inline-block;'>
+                    <li>Triangle rasterization and optimizations.</li>
+                    <li>Antialiasing by supersampling.</li>
+                    <li>Configurable sampling rate</li>
+                    <li>Transformation functions.</li>
+                    <li>Barycentric coordinates interpolation.</li>
+                    <li>Texture mapping.
+                      <ul>
+                        <li>Nearest sampling</li>
+                        <li>Bilinear sampling</li>
+                        <li>Level sampling with mipmapping</li>
+                      </ul>
+                    </li>
+                </div>
+
+                <div>
+                  <p>Read the Webpage writeup:</p>
+                  <a href='https://cal-cs184-student.github.io/joel-castro/hw1/index.html' target='_blank' rel='noopener noreferrer' 
+                     class='fancybox-link' style='display: inline-block; margin-bottom: 1em;'>Webpage Writeup</a>
+                </div>">
+              <img src="assets/img/work/joel_cat_art_184.png" alt="">
+              <div class="img-caption">
+                <h5 class="fg-theme">Rasterizer</h5>
+                <p>C++</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sockrates -->
+          <div class="grid-item tools wow zoomIn">
+            <div class="img-place" data-src="assets/img/work/sockrates_thumbnail.png" data-fancybox data-caption="
+              <h5 class='fg-theme'>Sockrates: Color sorting/folding clothing with robot arm</h5> 
+              <p>ROS, Python (OpenCV)</p>
+              <p class='description'>
+                Programmed Sawyer industrial robot arm to fold socks and sort them based on color. Worked in group of 4 for a semester and presented results at UC Berkeley's EECS 106A showcase.
+              </p>
+              <a href='https://106a-project-site.vercel.app/' target='_blank' rel='noopener noreferrer' 
+                 class='fancybox-link' style='display: inline-block; margin-bottom: 1em;'>Sockrates Project Website</a>
+              <p class='fancy-caption' style='text-align: center; margin-bottom: 0;'>Personal Contributions:</p>
+              <ul style='text-align: center; list-style-position: inside; margin: 0 auto; display: inline-block;'>
+                <li>Implemented Python, OpenCV HSV-mask color sorting script that resulted in 100% correct classification.</li>
+                <li>Worked on Inverse-Kinematics-based (IK) path planning for delivering folded socks to their correct bin.</li>
+                <li>Worked on Forward Kinematic (FK) sock folding actuation.</li>
+                <li>Built ROS Publisher/Subscriber system to integrate computer vision, FK, and IK scripts.</li>
+              </ul>
+              <p class='fancy-caption' style='margin-top: 1em'>Watch a recording the final result here:</p>
+              <div class='video-wrapper'>
+                <iframe 
+                    src='https://drive.google.com/file/d/11-zguzEzdEjrxlBZVUAKveZ_bwcv8hqE/preview' 
+                    width='560' 
+                    height='315' 
+                    frameborder='0' 
+                    allow='autoplay; encrypted-media' 
+                    allowfullscreen>
+                </iframe>
+              </div>">
+              <img src="assets/img/work/sockrates_thumbnail.png" alt="">
+              <div class="img-caption">
+                <h5 class="fg-theme">Sockrates: Color sorting/folding clothing</h5>
+                <p>ROS, Python (OpenCV), Sawyer (industrial robot arm)</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Four Birds -->
+          <div class="grid-item animation wow zoomIn">
+            <div class="img-place" data-src="assets/img/work/four_birds_thumbnail.png" data-fancybox data-caption="
+            <h5 class='fg-theme'>Four Birds</h5> <p>Maya, After Effects, Premiere Pro, Animated Short</p>
+            <p class='description'>Produced in a team of 3 within a semester for UC Berkeley's UCBUGG community showcase.</p>
+            <p class='fancy-caption' style='text-align: center; margin-bottom: 0;'>Personal Contributions:               </p>
+            <ul style='text-align: center; list-style-position: inside; margin: 0 auto; display: inline-                  block;'>
+                <li>Wrote custom expressions to generate camera and baby-bird movements.</li>
+                <li>Animated the following time-stamps: 0:00-0:07, 0:50-1:25.</li>
+                <li>Performed all compositing, sound-design, and editing.</li>
+                <li>Modeled, rigged, and skinned Mama Bird.</li>
+                <li>Designed Mama Bird and 4 baby birds.</li>
+                <li>Rendered with Pixar Renderman.</li>
+                <li>Co-storyboarded the short.</li>
+                <li>Textured baby birds.</li>
+            </ul>
+            <p class='fancy-caption'; style='margin-top: 1em'>Watch it here:</p>
+            <div class='video-wrapper'>
+            <iframe width='560' height='315'src='https://www.youtube.com/embed/mOlBL_qqE-Q?' title='YouTube video player' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share' referrerpolicy='strict-origin-when-cross-origin' allowfullscreen></iframe>
+            </div>">
+              <img src="assets/img/work/four_birds_thumbnail.png" alt="">
+              <div class="img-caption">
+                <h5 class="fg-theme">Four Birds</h5>
+                <p>Maya, After Effects, Animated Short</p>
+              </div>
+            </div>
+          </div>
+          <div class="grid-item graphics wow zoomIn">
+            <div class="img-place" data-src="assets/img/work/JoelProjection-BasedRenderingInProcessingThumbnail.png"
+              data-fancybox
+              data-caption="
+            <h5 class='fg-theme'>Projection-Based Rendering</h5> <p>Processing, Java</p>
+            <p class='description'>Rederiving and implementing projection-based rendering in Processing (Java kernel). Built with nothing more than the Processing's 2D line drawing function. Implemented 3D model (STL, OBJ) importing, player scene traversal, and performance optimizations such as frustum and backface culling.</p>
+            <a href='https://github.com/Joel-CA/projectionBasedRenderingInProcessing' target='_blank' rel='noopener noreferrer' class='fancybox-link'>Github Page</a>
+            <a href='https://joel-ca.itch.io/projection-based-rendering' target='_blank' rel='noopener noreferrer' class='fancybox-link'>Run Yourself On Itch.io</a>
+            <div class='video-wrapper'>
+            <iframe width='560' height='315'src='https://www.youtube.com/embed/Q6nHebSofoQ?si=RNkhDt4KfbQ4FD0B' title='YouTube video player' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share' referrerpolicy='strict-origin-when-cross-origin' allowfullscreen></iframe>
+            </div>
+            <a href='assets/misc/Projection-Based Rendering (scratch) Notebook.pdf' class='btn btn-theme-outline' download='Projection-Based Rendering (scratch) Notebook.pdf'>Download Derivation (scratch!) Notes</a>">
+              <img src="assets/img/work/JoelProjection-BasedRenderingInProcessingThumbnail.png" alt="">
+              <div class="img-caption">
+                <h5 class="fg-theme">Projection-Based Rendering</h5>
+                <p>Processing, Java</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Portal Spoof -->
+          <div class="grid-item games wow zoomIn">
+            <div class="img-place" data-src="assets/img/work/portal_spoof_image.JPG" data-fancybox
+              data-caption="
+            <h5 class='fg-theme'>Portal Spoof</h5> <p>Unreal Engine 5</p>
+            <p class='description'>UE5 camera component-based portal gun inspired by the Valve game series! Supports, momentum conservation, item/player teleporation, and a dynamic view out through the other portal just like in the real game. </p>
+            <div class='video-wrapper'>
+              <iframe width='560' height='315' src='https://www.youtube.com/embed/0RrBIWU3Qg4' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen>
+              </iframe>
+            </div>
+            <p class='fancy-caption__body'>BluePrint implementation by Unreal Academy averages at around 30 FPS on my AMD Ryzen 7 3800x 8-Core Processor + Gigabyte GeForce GTX 1660 😬. As my currently ongoing project, I am working no re-implementing the BP in C++ to best optimize memory and thread usage. Results to be compared!</p>">
+              <img src="assets/img/work/portal_spoof_image.JPG" alt="">
+              <div class="img-caption">
+                <h5 class="fg-theme">Portal Spoof</h5>
+                <p>Unreal Engine 5</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Spotify to MP3 -->
+          <div class="grid-item tools wow zoomIn">
+            <div class="img-place" data-src="assets/img/work/spotify_to_mp3_readme_image.JPG" data-fancybox
+              data-caption="<h5 class='fg-theme'>Spotify to Mp3</h5> 
+            <p>YouTube API, Spotify API, Python</p>
+            <p class='fancy-caption'>Legally download your favorite Spotify playlists in mp3 format (via YouTube) for free!</p>
+            <a href='https://github.com/Joel-CA/spotify_to_mp3' target='_blank' rel='noopener noreferrer' class='fancybox-link'>Github Page</a>
+            <p class='description'>This project goes out to my Vivo Music 3 Garmin watch ✊. I didn't want to pay for Spotify Premium to listen to music on it so I built this tool out of spite last night-- now I can upload my playlists to my watch at the low low cost of nothing :D.</p>">
+              <img src="assets/img/work/spotify_to_mp3_readme_image.JPG" alt="">
+              <div class="img-caption">
+                <h5 class="fg-theme">Spotify to Mp3</h5>
+                <p>YouTube API, Spotify API, Python</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Reefer -->
+          <div class="grid-item hackatons tools web-dev wow zoomIn">
+            <div class="img-place" data-src="assets/img/work/refer_image.JPG" data-fancybox
+              data-caption="<h5 class='fg-theme'>Reefer</h5>
+            <p>LA Hacks, Coral Health ML Classifier</p>
+            <p class='description'>Reefer is a web app that takes in a single image of coral and outputs:</p>
+            <p class='fancy-caption'>1. The health of the coral (whether it is bleached or not)</p>
+            <p class='fancy-caption'>2. An interpretable analysis of why the model evaluated the way it did</p>
+            <a href='https://devpost.com/software/reefer' target='_blank' rel='noopener noreferrer' class='fancybox-link'>DEVPOST</a>
+            <p class='description'>I was primairly responsible for Reefer's Gemini Interpretability Interface and its subsequent integration with the front-end and other back-end processes via python-bash scripting. Additionally, I supported the development of the front-end.</p>">
+              <img src="assets/img/work/refer_image.JPG" alt="">
+              <div class="img-caption">
+                <h5 class="fg-theme">Reefer</h5>
+                <p>LA Hacks, Coral Health ML Classifier, Gemini API, Python (Reflex), Bash</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Rototo's Escape -->
+          <div class="grid-item games wow zoomIn">
+            <div class="img-place" data-src="assets/img/work/rototos_escape_image.JPG" data-fancybox data-caption="<h5 class='fg-theme'>Rototo's Escape</h5>
+            <p>Unity, JavaScript</p>
+            <p class='fancy-caption'>Use the recoil of the pulse gun to solve different platforming puzzles and help Rototo escape from the lab!</p>
+            <a href='https://guardhei.itch.io/rototos-escape' target='_blank' rel='noopener noreferrer' class='fancybox-link'>PLAY on itch.io</a>
+            <p class='description'>Co-developed a working 2D platformer video game prototype within a semester for a community showcase. I implemented GUI logic and game sound mechanics logic.
+</p>">
+              <img src="assets/img/work/rototos_escape_image.JPG" alt="">
+              <div class="img-caption">
+                <h5 class="fg-theme">Rototo's Escape</h5>
+                <p>Unity, JavaScript</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Picture Pathway -->
+          <div class="grid-item hackatons tools web-dev wow zoomIn">
+            <div class="img-place" data-src="assets/img/work/picture_pathway_image.JPG" data-fancybox
+              data-caption="<h5 class='fg-theme'>Picture Pathway</h5>
+            <p>TreeHacks (Winner), Dall-E API, HTML, JavaScript, Python (Jango), SQL</p>
+            <p class='fancy-caption'>Picture Pathway is a student-teacher platform that aims to emulate this studying methodology through generative AI visualization assignments!</p>
+            <a href='https://devpost.com/software/picture-pathway' target='_blank' rel='noopener noreferrer' class='fancybox-link'>DEVPOST</a>
+            <p class='description'>I was responsible for the front-end and supported teamates through integration and debugging of the back-end.</p>">
+              <img src="assets/img/work/picture_pathway_image.JPG" alt="">
+              <div class="img-caption">
+                <h5 class="fg-theme">Picture Pathway</h5>
+                <p>TreeHacks (Winner), Dall-E API, JavaScript</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Saucy Car -->
+          <div class="grid-item animation wow zoomIn">
+            <div class="img-place" data-src="assets/img/work/saucy_car_image.JPG" data-fancybox
+              data-caption="<h5 class='fg-theme'>Saucy Car</h5>
+            <p>Maya, After Effects, Animated short</p>
+            <p class='description'>Storyboarded, modeled, textured, rigged, skinned, animated, rendered, composited and sound-designed my first ever 3D animated short from scratch in a team of four within a semester.</p>
+            <p class='fancy-caption' style='text-align: center; margin-bottom: 0;'>Personal Contributions:               </p>
+            <ul style='text-align: center; list-style-position: inside; margin: 0 auto; display: inline-                  block;'>
+                <li>Performed smokecloud FX animation/compositing, and all sound-design/editing.</li>
+                <li>Modeled and textured pick-up truck, monster truck, and fridge.</li>
+                <li>Animated the following time-stamp: 0:32-0:42.</li>
+                <li>Textured and lit environment.</li>
+                <li>Rendered with Arnold.</li>
+                <li>Skinned 'Biker Dude'.</li>
+            </ul>
+            <p class='fancy-caption'; style='margin-top: 1em'>Watch it here:</p>
+            <div class='video-wrapper'><iframe width='560' height='315' src='https://www.youtube.com/embed/a063XUSM7wo' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe></div>">
+              <img src="assets/img/work/saucy_car_image.JPG" alt="">
+              <div class="img-caption">
+                <h5 class="fg-theme">Saucy Car</h5>
+                <p>Maya, After Effects, Animated short</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Essay -->
+          <div class="grid-item film wow zoomIn">
+            <div class="img-place" data-src="assets/img/work/essay_image.jpg" data-fancybox data-caption="<h5 class='fg-theme'>'Essay': An Atom Egoyan 'Calendar' Spoof</h5>
+            <p>Premiere Pro, Narrative Short Film</p>
+            <p class='description'>Inspired by the cinematic techniques employed in Atom Egoyan’s 1993 film, Calendar, 'Essay' by Joel Castro attempts to capture the interconnectedness of language and culture, demonstrating how they contribute to our identities.</p>
+            <a href='https://filmfreeway.com/Essay437' target='_blank' rel='noopener noreferrer' class='fancybox-link'>View on FilmFreeway</a>
+            <p class='fancy-caption'>or watch it right here via YouTube:</p>
+            <div class='video-wrapper'>
+              <iframe width='560' height='315' src='https://www.youtube.com/embed/eP231yEMXqw' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen>
+              </iframe>
+            </div>
+            ">
+              <img src="assets/img/work/essay_image.jpg" alt="">
+              <div class="img-caption">
+                <h5 class="fg-theme">"Essay": An Atom Egoyan "Calendar" Spoof</h5>
+                <p>Premiere Pro, Narrative Short Film</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Fulfilling Measure B -->
+          <div class="grid-item film wow zoomIn">
+            <div class="img-place" data-src="assets/img/work/fulfilling_measure_B_image.JPG" data-fancybox data-caption="<h5 class='fg-theme'>Fulfilling Measure B</h5>
+            <p>Premiere Pro, Narrative Short Film</p>
+            <p class='description'>Fulfilling Measure B is a telling of a decades-long battle toward police reform in the city of San Diego. The film intends to recognize the monumental efforts of community members and organizations, and to shine a light on the need for reform.</p>
+            <a href='https://filmfreeway.com/FulfillingMeasureB' target='_blank' rel='noopener noreferrer' class='fancybox-link'>View on FilmFreeway</a>
+            <a href='https://breathablestreets.ucsd.edu/youth-ambassador-scholars' target='_blank' rel='noopener noreferrer' class='fancybox-link'>View UCSD's Breathable Streets cite</a>
+            <p class='fancy-caption'>or watch via YouTube (log-in required due to age-restriction):</p>
+            <div class='video-wrapper'>
+              <iframe width='560' height='315' src='https://www.youtube.com/embed/jzBEzjYkF9g' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen>
+              </iframe>
+            </div>">
+              <img src="assets/img/work/fulfilling_measure_B_image.JPG" alt="">
+              <div class="img-caption">
+                <h5 class="fg-theme">Fulfilling Measure B</h5>
+                <p>Premiere Pro, Documentary Short Film</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cave Explorer -->
+          <div class="grid-item games wow zoomIn">
+            <div class="img-place" data-src="assets/img/work/cave-explorer-screenshot02.png" data-fancybox data-caption="
+              <h5 class='fg-theme'>Cave Explorer</h5> 
+              <p>Processing, Java</p>
+              <p class='description'>
+                Cave-themed, visually aesthetic platformer. Collect gems, don't fall, get rich.
+              </p>
+              <div class='video-wrapper'>
+              <iframe width='560' height='315' src='https://www.youtube-nocookie.com/embed/NJtRTk5r7jk?si=qEc0ciqnIyKJbnym' title='YouTube video player' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share' referrerpolicy='strict-origin-when-cross-origin' allowfullscreen></iframe>
+              </div>
+              <iframe frameborder='0' src='https://itch.io/embed/3702184?linkback=true&amp;dark=true' width='552' height='167'><a href='https://joel-ca.itch.io/cave-explorer'>Cave Explorer by Joel-CA</a></iframe>
+              <p>See the code on my GitHub:</p>
+              <a href='https://github.com/Joel-CA/cave-explorer/tree/main' target='_blank' rel='noopener noreferrer' 
+                 class='fancybox-link' style='display: inline-block; margin-bottom: 1em;'>Github Page
+              </a>
+              ">
+              <img src="assets/img/work/cave-explorer-screenshot02.png" alt="">
+              <div class="img-caption">
+                <h5 class="fg-theme">Cave Explorer</h5>
+                <p>Processing, Java</p>
+              </div>
+            </div>
+          </div>
+        </div> <!-- End gridder -->
+        <!-- <div class="text-center wow fadeInUp">
+        <a href="javascript:void(0)" class="btn btn-theme">Load More</a>
+      </div>
+      -->
+      </div>
+    </div> <!-- End Portfolio page -->
+
+    <!-- My Skills -->
+    <div class="container py-5">
+      <h1 class="text-center fw-normal wow fadeIn" style="visibility: visible; animation-name: fadeIn;">My Skills</h1>
+      <div class="row py-3">
+        <div class="col-md-6">
+          <div class="px-lg-3">
+            <h4 class="wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">Coding skills</h4>
+            <div class="progress-wrapper wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
+
+              <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: 100%;" aria-valuenow="75" aria-valuemin="0"
+                  aria-valuemax="100">Java</div>
+              </div>
+            </div>
+            <div class="progress-wrapper wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
+
+              <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: 100%;" aria-valuenow="75" aria-valuemin="0"
+                  aria-valuemax="100">C++</div>
+              </div>
+            </div>
+            <div class="progress-wrapper wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
+
+              <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: 100%;" aria-valuenow="75" aria-valuemin="0"
+                  aria-valuemax="100">Python</div>
+              </div>
+            </div>
+            <div class="progress-wrapper wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
+
+              <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: 100%;" aria-valuenow="75" aria-valuemin="0"
+                  aria-valuemax="100">C</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="px-lg-3">
+            <h4 class="wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">Software Skills</h4>
+            <div class="progress-wrapper wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
+
+              <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: 100%;" aria-valuenow="75" aria-valuemin="0"
+                  aria-valuemax="100">AutoDesk Maya</div>
+              </div>
+            </div>
+            <div class="progress-wrapper wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
+
+              <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: 100%;" aria-valuenow="75" aria-valuemin="0"
+                  aria-valuemax="100">Unreal Engine</div>
+              </div>
+            </div>
+            <div class="progress-wrapper wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
+
+              <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: 100%;" aria-valuenow="75" aria-valuemin="0"
+                  aria-valuemax="100">Adobe Premiere Pro</div>
+              </div>
+            </div>
+            <div class="progress-wrapper wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
+
+              <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: 100%;" aria-valuenow="75" aria-valuemin="0"
+                  aria-valuemax="100">Adobe After Effects</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Footer -->
+    <div class="vg-footer" id="contact">
+      <h1 class="text-center">Joel's Porfolio</h1>
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-4 py-3">
+            <div class="text-center">
+              <p>My Socials</p>
+              <p>━━━━━━━━━━</p>
+              <!--<hr class="divider">-->
+              <ul class="list-unstyled">
+                <li><a href="https://www.linkedin.com/in/joel-castro-/" target="_blank"
+                    rel="noopener noreferrer">LinkedIn</a></li>
+                <li><a href="https://www.instagram.com/joel.castro__/" target="_blank"
+                    rel="noopener noreferrer">Instagram</a></li>
+                <li><a href="https://www.youtube.com/channel/UCdyH58i2nqY-lhJjnWhvcNA" target="_blank"
+                    rel="noopener noreferrer">YouTube</a></li>
+                <li><a href="https://github.com/Joel-CA" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-4 py-3">
+            <div class="text-center">
+              <p>Contact me</p>
+              <p>━━━━━━━━━━</p>
+              <!-- <hr class="divider">-->
+              <ul class="list-unstyled">
+                <li>joelcastro [at] berkeley [dot] edu</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="row justify-content-center mt-3">
+          <style>
+            .hidden {
+              visibility: hidden;
+            }
+          </style>
+          <div class="col-12 mb-3">
+            <h3 class="fw-normal text-center hidden"">Subscribe</h3>
+              </div>
+              <div class=" col-lg-6 hidden"">
+              <form class="mb-3">
+                <div class="input-group">
+                  <input type="text" class="form-control" placeholder="Email address">
+                  <input type="submit" class="btn btn-theme no-shadow" value="Subscribe">
+                </div>
+              </form>
+          </div>
+          <div class="col-12">
+            <p class="text-center mb-0 mt-4">Copyright &copy;2026. All rights reserved.</p>
+          </div>
+          <p class="text-center mb-0 mt-4 hidden">Copyright &copy;2026. All right reserved | This template is made with
+            <span class="ti-heart fg-theme-red"></span> by <a href="https://www.macodeid.com/">MACode ID</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div> <!-- End footer -->
+
+  <script src="assets/js/jquery-3.5.1.min.js"></script>
+
+  <script src="assets/js/bootstrap.bundle.min.js"></script>
+
+  <script src="assets/vendor/owl-carousel/owl.carousel.min.js"></script>
+
+  <script src="assets/vendor/perfect-scrollbar/js/perfect-scrollbar.js"></script>
+
+  <script src="assets/vendor/isotope/isotope.pkgd.min.js"></script>
+
+  <script src="assets/vendor/nice-select/js/jquery.nice-select.min.js"></script>
+
+  <script src="assets/vendor/fancybox/js/jquery.fancybox.min.js"></script>
+
+  <script src="assets/vendor/wow/wow.min.js"></script>
+
+  <!-- Claude: script to fix WOW fade-in animations not loading as intended -->
+  <script>
+  // Handle filter button clicks to trigger animations for visible items
+  document.addEventListener('DOMContentLoaded', function() {
+    const filterButtons = document.querySelectorAll('.filterable-button button');
+    const gridItems = document.querySelectorAll('.grid-item');
+    
+    // Function to trigger animations for first 3 visible items
+    function triggerVisibleAnimations(filter) {
+      let visibleCount = 0;
+      const maxAutoTrigger = 3;
+      
+      gridItems.forEach(item => {
+        // Check if item matches the filter
+        const shouldShow = filter === '*' || item.classList.contains(filter.substring(1));
+        
+        if (shouldShow && visibleCount < maxAutoTrigger) {
+          // Force trigger the animation
+          item.classList.remove('wow');
+          item.style.visibility = 'visible';
+          item.style.animationName = 'zoomIn';
+          
+          visibleCount++;
+        } else if (shouldShow) {
+          // Reset wow animation for items beyond the first 3
+          if (!item.classList.contains('wow')) {
+            item.classList.add('wow');
+          }
+          item.style.visibility = '';
+          item.style.animationName = '';
+        }
+      });
+      
+      // DON'T reinitialize WOW - just manually check scroll position for remaining items
+      checkScrollPosition();
+    }
+    
+    // Function to check which items should animate based on scroll position
+    function checkScrollPosition() {
+      gridItems.forEach(item => {
+        if (item.classList.contains('wow') && isInViewport(item)) {
+          item.classList.remove('wow');
+          item.style.visibility = 'visible';
+          item.style.animationName = 'zoomIn';
+        }
+      });
+    }
+    
+    // Helper function to check if element is in viewport
+    function isInViewport(element) {
+      const rect = element.getBoundingClientRect();
+      const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+      return (
+        rect.top <= windowHeight * 0.8 && // Trigger a bit before fully in view
+        rect.bottom >= 0
+      );
+    }
+    
+    // Add scroll listener for remaining items
+    let scrollTimeout;
+    window.addEventListener('scroll', function() {
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(checkScrollPosition, 50);
+    });
+    
+    // Add click handlers to filter buttons
+    filterButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        const filter = this.getAttribute('data-filter');
+        
+        // Small delay to allow isotope/filtering to complete first
+        setTimeout(() => {
+          triggerVisibleAnimations(filter);
+        }, 50);
+      });
+    });
+    
+    // Trigger on initial load for the "All" filter
+    triggerVisibleAnimations('*');
+  });
+  </script>
+
+  <script src="assets/vendor/animateNumber/jquery.animateNumber.min.js"></script>
+
+  <script src="assets/vendor/waypoints/jquery.waypoints.min.js"></script>
+
+  <script src="assets/js/google-maps.js"></script>
+
+  <script src="assets/js/topbar-virtual.js"></script>
+
+</body>
+
+</html>
