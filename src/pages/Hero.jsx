@@ -43,7 +43,7 @@ const Hero = () => {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="inline-block px-6 py-2 rounded-full border-2 border-primary-500 text-primary-400 font-medium"
         >
-          CS Masters @ USC
+          Computer Science Masters @ USC
         </motion.div>
 
         {/* Scroll indicator */}
