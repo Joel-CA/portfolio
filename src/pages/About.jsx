@@ -43,7 +43,7 @@ const About = () => {
             >
               <div className="absolute inset-0 bg-gradient-to-br from-primary-500/20 to-primary-700/20 rounded-2xl blur-2xl" />
               <img
-                src="/assets/img/SURF Portrait Square (softbox lighting).png"
+                src="./assets/img/SURF Portrait Square (softbox lighting).png"
                 alt="Joel Castro Portrait"
                 className="relative rounded-2xl shadow-2xl border border-primary-500/20 w-full h-auto"
               />

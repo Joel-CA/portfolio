@@ -81,7 +81,7 @@ Edit `src/pages/Projects.jsx` and add to the `projects` array:
 {
   id: 21,
   title: 'Your Project',
-  image: '/assets/img/...',
+  image: './assets/img/...',
   description: 'Project description',
   tech: 'Technologies used',
   category: 'games', // games, graphics, tools, animation, film

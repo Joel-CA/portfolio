@@ -34,7 +34,7 @@ This creates an optimized version in the `dist/` folder.
 
 ### Update Your Resume Link
 1. Open `src/pages/About.jsx`
-2. Find the `href="/assets/resumes/..."`
+2. Find the `href="./assets/resumes/..."`
 3. Update the path to your new resume file
 
 ### Add Social Media Link

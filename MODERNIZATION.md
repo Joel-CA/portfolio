@@ -139,7 +139,7 @@ Edit `src/pages/Projects.jsx` and add to the `projects` array:
 {
   id: 21,
   title: 'Your Project Name',
-  image: '/assets/img/work/your-image.jpg',
+  image: './assets/img/work/your-image.jpg',
   description: 'Short project description',
   tech: 'React, Tailwind CSS',
   category: 'graphics', // games, graphics, tools, animation, film
@@ -161,7 +161,7 @@ Edit `src/pages/Publications.jsx` and add to the `publications` array:
   venue: 'Conference/Journal Name',
   status: 'Published',
   abstract: 'Paper abstract...',
-  posterImage: '/assets/Posters/...',
+  posterImage: './assets/Posters/...',
   links: [
     { text: 'View Paper', url: 'https://...' }
   ]
