@@ -18,12 +18,12 @@ const Publications = () => {
       venue: 'TBD',
       status: 'Draft',
       abstract: '[Abstract TBD].',
-      posterImage: '/assets/Posters/Teaching Robots to Write Preview.png',
+      posterImage: './assets/Posters/Teaching Robots to Write Preview.png',
       links: [
         { text: 'Paper Coming Soon', url: '#', disabled: true },
         { text: 'Conference Page Coming Soon', url: '#', disabled: true },
       ],
-      posterLink: '/assets/Posters/REAL Labs - Teaching Robots to Write (SURF & SEED versions).pdf',
+      posterLink: './assets/Posters/REAL Labs - Teaching Robots to Write (SURF & SEED versions).pdf',
       videoLink: 'https://youtu.be/6p_m_byNkXs?si=cVlmHBuHn--0y3HV',
       videoLinkText: 'Lightning Talk Video',
     },
@@ -34,7 +34,7 @@ const Publications = () => {
       status: 'Published',
       abstract:
         'Visualizations play a significant role in writing, debugging, profiling, and generally understanding programs. However, little work has been done to understand the structure of program visualizations at a fundamental level— namely, why and how they scale. In this paper we present a theory of the interpretability of program visualizations focused on their abstraction and composition properties.',
-      posterImage: '/assets/Posters/Understanding Program Visualizations In The Wild Preview.png',
+      posterImage: './assets/Posters/Understanding Program Visualizations In The Wild Preview.png',
       links: [
         {
           text: 'View Paper',
@@ -49,7 +49,7 @@ const Publications = () => {
           url: 'https://dl.acm.org/doi/abs/10.1145/3689491.3689975',
         },
       ],
-      posterLink: '/assets/Posters/Understanding Program Visualizations in the Wild Poster (REUSE & SPLASH Versions).pdf',
+      posterLink: './assets/Posters/Understanding Program Visualizations in the Wild Poster (REUSE & SPLASH Versions).pdf',
       awards: [
         'Selected for Poster & Oral Presentations at SPLASH',
         'Selected for Poster Presentation at SACNAS',

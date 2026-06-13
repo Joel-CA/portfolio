@@ -13,7 +13,7 @@ const Projects = () => {
     {
       id: 1,
       title: 'Diffusion/FM (from scratch)',
-      image: '/assets/img/work/cs180_proj5_imgs/pic_w_kanazawa_transition_to_infill.gif',
+      image: './assets/img/work/cs180_proj5_imgs/pic_w_kanazawa_transition_to_infill.gif',
       description: 'Explorations in diffusion and flow-matching generative models, image infill and class-conditioned sampling.',
       tech: 'Python, PyTorch',
       category: 'tools',
@@ -32,7 +32,7 @@ const Projects = () => {
     {
       id: 2,
       title: 'NeRF (from scratch)',
-      image: '/assets/img/work/cs180_proj4_imgs/lafufu_nerf_thumnail.gif',
+      image: './assets/img/work/cs180_proj4_imgs/lafufu_nerf_thumnail.gif',
       description: 'Implementation of Neural Radiance Fields for 3D scene reconstruction from multi-view images.',
       tech: 'Python, PyTorch',
       category: 'tools',
@@ -53,7 +53,7 @@ const Projects = () => {
     {
       id: 3,
       title: 'ANova Space Adventure',
-      image: '/assets/img/work/arduino_picture.jpg',
+      image: './assets/img/work/arduino_picture.jpg',
       description: 'An endless space flyer for the Arduino joystick! Navigate your jet through an asteroid field.',
       tech: 'Processing, Java, Arduino',
       category: 'games',
@@ -68,7 +68,7 @@ const Projects = () => {
     {
       id: 4,
       title: 'Spheres & Physics',
-      image: '/assets/img/work/spheres_physics_thumbnnail.jpg',
+      image: './assets/img/work/spheres_physics_thumbnnail.jpg',
       description: 'Minecraft Fabric Mod with spheres that interact with physics and custom shaders.',
       tech: 'Minecraft Fabric Mod, Java',
       category: 'games',
@@ -91,7 +91,7 @@ const Projects = () => {
     {
       id: 5,
       title: 'Cloth Simulator',
-      image: '/assets/img/work/mirror_shader_clothOnSphere.jpg',
+      image: './assets/img/work/mirror_shader_clothOnSphere.jpg',
       description: 'C++ cloth simulation with physics, collision detection, and advanced shading.',
       tech: 'C++',
       category: 'graphics',
@@ -111,7 +111,7 @@ const Projects = () => {
     {
       id: 6,
       title: 'Path Tracer',
-      image: '/assets/img/work/RR_m5_bunny.png',
+      image: './assets/img/work/RR_m5_bunny.png',
       description: 'C++ path tracer with BVH acceleration, direct/global illumination, and adaptive sampling.',
       tech: 'C++',
       category: 'graphics',
@@ -132,7 +132,7 @@ const Projects = () => {
     {
       id: 7,
       title: 'Mesh Editor',
-      image: '/assets/img/work/king_clawthorn.png',
+      image: './assets/img/work/king_clawthorn.png',
       description: 'C++ mesh editor with Bezier curves, half-edge data structure, and loop subdivision.',
       tech: 'C++',
       category: 'graphics',
@@ -154,7 +154,7 @@ const Projects = () => {
     {
       id: 8,
       title: 'Rasterizer',
-      image: '/assets/img/work/joel_cat_art_184.png',
+      image: './assets/img/work/joel_cat_art_184.png',
       description: 'C++ rasterizer with antialiasing, texture mapping, and level sampling.',
       tech: 'C++',
       category: 'graphics',
@@ -175,7 +175,7 @@ const Projects = () => {
     {
       id: 9,
       title: 'Sockrates: Color Sorting/Folding',
-      image: '/assets/img/work/sockrates_thumbnail.png',
+      image: './assets/img/work/sockrates_thumbnail.png',
       description: 'Programmed Sawyer robot arm to fold socks and sort by color using OpenCV and ROS.',
       tech: 'ROS, Python (OpenCV), Sawyer Robot',
       category: 'tools',
@@ -195,7 +195,7 @@ const Projects = () => {
     {
       id: 10,
       title: 'Four Birds',
-      image: '/assets/img/work/four_birds_thumbnail.png',
+      image: './assets/img/work/four_birds_thumbnail.png',
       description: 'Animated short produced in a team for UC Berkeley\'s UCBUGG community showcase.',
       tech: 'Maya, After Effects, Animated Short',
       category: 'animation',
@@ -218,7 +218,7 @@ const Projects = () => {
     {
       id: 11,
       title: 'Projection-Based Rendering',
-      image: '/assets/img/work/JoelProjection-BasedRenderingInProcessingThumbnail.png',
+      image: './assets/img/work/JoelProjection-BasedRenderingInProcessingThumbnail.png',
       description: 'Projection-based rendering in Processing with 3D model importing and performance optimizations.',
       tech: 'Processing, Java',
       category: 'graphics',
@@ -233,7 +233,7 @@ const Projects = () => {
     {
       id: 12,
       title: 'Portal Spoof',
-      image: '/assets/img/work/portal_spoof_image.JPG',
+      image: './assets/img/work/portal_spoof_image.JPG',
       description: 'UE5 portal gun inspired by Valve\'s Portal game with momentum conservation and item teleportation.',
       tech: 'Unreal Engine 5',
       category: 'games',
@@ -247,7 +247,7 @@ const Projects = () => {
     {
       id: 13,
       title: 'Spotify to MP3',
-      image: '/assets/img/work/spotify_to_mp3_readme_image.JPG',
+      image: './assets/img/work/spotify_to_mp3_readme_image.JPG',
       description: 'Tool to legally download Spotify playlists as MP3 files via YouTube.',
       tech: 'YouTube API, Spotify API, Python',
       category: 'tools',
@@ -261,7 +261,7 @@ const Projects = () => {
     {
       id: 14,
       title: 'Reefer',
-      image: '/assets/img/work/refer_image.JPG',
+      image: './assets/img/work/refer_image.JPG',
       description: 'LA Hacks coral health ML classifier with interpretability using Gemini.',
       tech: 'Gemini API, Python (Reflex), Bash',
       category: 'tools',
@@ -281,7 +281,7 @@ const Projects = () => {
     {
       id: 15,
       title: "Rototo's Escape",
-      image: '/assets/img/work/rototos_escape_image.JPG',
+      image: './assets/img/work/rototos_escape_image.JPG',
       description: '2D platformer game with recoil-based physics puzzle mechanics.',
       tech: 'Unity, JavaScript',
       category: 'games',
@@ -295,7 +295,7 @@ const Projects = () => {
     {
       id: 16,
       title: 'Picture Pathway',
-      image: '/assets/img/work/picture_pathway_image.JPG',
+      image: './assets/img/work/picture_pathway_image.JPG',
       description: 'TreeHacks winner - student-teacher platform with generative AI visualizations.',
       tech: 'Dall-E API, JavaScript, Python (Django), SQL',
       category: 'tools',
@@ -309,7 +309,7 @@ const Projects = () => {
     {
       id: 17,
       title: 'Saucy Car',
-      image: '/assets/img/work/saucy_car_image.JPG',
+      image: './assets/img/work/saucy_car_image.JPG',
       description: 'First 3D animated short with modeling, rigging, animation, and rendering.',
       tech: 'Maya, After Effects, Animated Short',
       category: 'animation',
@@ -331,7 +331,7 @@ const Projects = () => {
     {
       id: 18,
       title: "'Essay': An Atom Egoyan 'Calendar' Spoof",
-      image: '/assets/img/work/essay_image.jpg',
+      image: './assets/img/work/essay_image.jpg',
       description: "Inspired by Atom Egoyan's techniques, exploring the interconnectedness of language and culture.",
       tech: 'Premiere Pro, Narrative Short Film',
       category: 'film',
@@ -346,7 +346,7 @@ const Projects = () => {
     {
       id: 19,
       title: 'Fulfilling Measure B',
-      image: '/assets/img/work/fulfilling_measure_B_image.JPG',
+      image: './assets/img/work/fulfilling_measure_B_image.JPG',
       description: 'Documentary exploring decades-long battle for police reform in San Diego.',
       tech: 'Premiere Pro, Documentary Short Film',
       category: 'film',
@@ -361,7 +361,7 @@ const Projects = () => {
     {
       id: 20,
       title: 'Cave Explorer',
-      image: '/assets/img/work/cave-explorer-screenshot02.png',
+      image: './assets/img/work/cave-explorer-screenshot02.png',
       description: 'Visually aesthetic cave-themed platformer. Collect gems, don\'t fall, get rich!',
       tech: 'Processing, Java',
       category: 'games',
