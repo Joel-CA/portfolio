@@ -13,15 +13,16 @@ const Publications = () => {
   }
   const publications = [
     {
-      title: '[Title TBD]',
-      authors: 'Austin Patel, Joel E. Castro Hernandez, Shuran Song',
-      venue: 'TBD',
-      status: 'Draft',
-      abstract: '[Abstract TBD].',
+      title: 'Behavior Prompting Policy: Demonstrations as Prompts for Manipulation',
+      authors: 'Austin Patel, Ben Pekarek, Joel E. Castro Hernandez, Shuran Song',
+      venue: 'Conference on Robot Learning (CoRL), 2026',
+      status: 'Pre-Print',
+      abstract: '"TL;DR: Reuse your existing robot demonstrations as in-context prompts during training. Then, at test time, you can prompt the in-context policy with a single demo to complete known or even new tasks."',
       posterImage: './assets/Posters/Teaching Robots to Write Preview.png',
       links: [
-        { text: 'Paper Coming Soon', url: '#', disabled: true },
-        { text: 'Conference Page Coming Soon', url: '#', disabled: true },
+        { text: 'Website', url: 'https://behavior-prompting.github.io/', disabled: false },
+        { text: 'Paper', url: 'https://behavior-prompting.github.io/media/paper.pdf', disabled: false },
+        { text: 'Code', url: 'https://github.com/real-stanford/behavior_prompting', disabled: false },
       ],
       posterLink: './assets/Posters/REAL Labs - Teaching Robots to Write (SURF & SEED versions).pdf',
       videoLink: 'https://youtu.be/6p_m_byNkXs?si=cVlmHBuHn--0y3HV',
@@ -59,7 +60,7 @@ const Publications = () => {
       title: 'Interpretable biophysical neural networks of transcriptional activation domains separate roles of protein abundance and coactivator binding',
       authors:
         'Claire LeBlanc, Pooja Agarwal, Jack Demaray, Gean Hu, Marissa Zintel, Angelica Lam, Joel E. Castro Hernandez, Max Staller',
-      venue: 'Cell Press',
+      venue: 'Machine Learning in Computational Biology (MLCB), 2026',
       status: 'Under Review (Preprint)',
       abstract:
         'Deep neural networks have improved biological prediction accuracy, but interpretation remains challenging. We designed simple neural networks incorporating biophysical models of transcriptional activation domains. These networks revealed how hydrophobic residues increase activation strength while decreasing protein abundance, and how acidic residues control both parameters. Combining biophysical and deep neural networks maximizes prediction accuracy and interpretability to yield insights into biological mechanisms.',
