@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { ExternalLink, Award } from 'lucide-react'
 import PublicationModal from '../components/PublicationModal'
-
+// Publications.jsx
 const Publications = () => {
   const [selectedPublication, setSelectedPublication] = useState(null)
   const [isModalOpen, setIsModalOpen] = useState(false)
