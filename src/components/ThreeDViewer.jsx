@@ -155,7 +155,7 @@ function FloatingLabel({ position = [0, 1.6, 0], label = 'Cowboy the cat', hidde
  * Inner scene component that has access to the R3F renderer context.
  * Handles TransformControls + OrbitControls coordination.
  */
-function SceneContents({ selectedScan, autoRotate, transformMode }) {
+function SceneContents({ selectedScan, autoRotate, transformMode, partyMode, audioRef }) {
   const modelRef = useRef()
   const orbitRef = useRef()
 
@@ -180,6 +180,8 @@ function SceneContents({ selectedScan, autoRotate, transformMode }) {
         objPath={selectedScan.objPath}
         mtlPath={selectedScan.mtlPath}
         autoRotate={autoRotate && !transformMode}
+        partyMode={partyMode}
+        audioRef={audioRef}
       />
 
       {/* Floating 3D label */}
@@ -220,10 +222,24 @@ function SceneContents({ selectedScan, autoRotate, transformMode }) {
 const ThreeDViewer = () => {
   const [selectedIndex, setSelectedIndex] = useState(0)
   const [autoRotate, setAutoRotate] = useState(true)
+  const [partyMode, setPartyMode] = useState(false)
   // null = orbit mode; 'translate' | 'rotate' | 'scale' = transform mode
   const [transformMode, setTransformMode] = useState(null)
   const webGLSupported = isWebGLAvailable()
   const selectedScan = scans[selectedIndex] || null
+  const audioRef = useRef(null)
+
+  // Handle party mode audio play/pause
+  useEffect(() => {
+    if (audioRef.current) {
+      if (partyMode) {
+        audioRef.current.volume = 0.5
+        audioRef.current.play().catch(e => console.warn('Audio play failed:', e))
+      } else {
+        audioRef.current.pause()
+      }
+    }
+  }, [partyMode])
 
   // Maya hotkeys: W=move, E=rotate, R=scale, Q=exit transform mode
   useEffect(() => {
@@ -292,6 +308,8 @@ const ThreeDViewer = () => {
                     selectedScan={selectedScan}
                     autoRotate={autoRotate}
                     transformMode={transformMode}
+                    partyMode={partyMode}
+                    audioRef={audioRef}
                   />
                 </Canvas>
               )}
@@ -337,24 +355,48 @@ const ThreeDViewer = () => {
           </div>
         )}
 
-        {/* Auto-rotate toggle */}
+        {/* Auto-rotate and Party toggle buttons */}
         {webGLSupported && (
-          <button
-            onClick={() => {
-              setAutoRotate((prev) => !prev)
-              if (!autoRotate) setTransformMode(null)
-            }}
-            className={`absolute top-2 right-2 z-10 p-2 rounded-xl border backdrop-blur-sm transition-all duration-300 ${
-              autoRotate && !transformMode
-                ? 'bg-primary-700/30 border-primary-500/50 text-primary-400 shadow-lg shadow-primary-500/10'
-                : 'bg-slate-900/60 border-slate-700/50 text-slate-400 hover:text-slate-200'
-            }`}
-            title={autoRotate ? 'Stop auto-rotate' : 'Start auto-rotate'}
-          >
-            {autoRotate && !transformMode ? <RotateCw size={16} /> : <RotateCcw size={16} />}
-          </button>
+          <div className="absolute top-2 right-2 z-10 flex gap-2">
+            <button
+              onClick={() => {
+                setPartyMode((prev) => !prev)
+                if (!partyMode) {
+                  setAutoRotate(true)
+                  setTransformMode(null)
+                }
+              }}
+              className={`p-2 rounded-xl border backdrop-blur-sm transition-all duration-300 ${
+                partyMode
+                  ? 'bg-fuchsia-600/80 border-fuchsia-400 text-white shadow-lg shadow-fuchsia-500/30 scale-110 animate-pulse'
+                  : 'bg-slate-900/60 border-slate-700/50 text-slate-400 hover:text-slate-200 hover:scale-105'
+              }`}
+              title={partyMode ? 'Stop Party Mode' : 'Start Party Mode'}
+            >
+              <span className="text-sm">🎉</span>
+            </button>
+
+            <button
+              onClick={() => {
+                setAutoRotate((prev) => !prev)
+                if (!autoRotate) setTransformMode(null)
+                if (partyMode) setPartyMode(false)
+              }}
+              className={`p-2 rounded-xl border backdrop-blur-sm transition-all duration-300 ${
+                autoRotate && !transformMode
+                  ? 'bg-primary-700/30 border-primary-500/50 text-primary-400 shadow-lg shadow-primary-500/10'
+                  : 'bg-slate-900/60 border-slate-700/50 text-slate-400 hover:text-slate-200'
+              }`}
+              title={autoRotate ? 'Stop auto-rotate' : 'Start auto-rotate'}
+            >
+              {autoRotate && !transformMode ? <RotateCw size={16} /> : <RotateCcw size={16} />}
+            </button>
+          </div>
         )}
       </div>
+
+      {/* Hidden audio player for party mode */}
+      <audio ref={audioRef} src="./assets/audio/party-cat.mp3" onEnded={() => setPartyMode(false)} />
     </div>
   )
 }

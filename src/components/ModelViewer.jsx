@@ -1,4 +1,4 @@
-import { useRef, useEffect, useMemo, forwardRef } from 'react'
+import { useRef, useEffect, useMemo, useState, forwardRef } from 'react'
 import { useLoader, useFrame } from '@react-three/fiber'
 import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader'
 import { MTLLoader } from 'three/examples/jsm/loaders/MTLLoader'
@@ -9,7 +9,7 @@ import * as THREE from 'three'
  * Automatically centers and scales the model to fit the viewport.
  */
 // forwardRef so TransformControls in the parent can attach to the group node
-const OBJModel = forwardRef(function OBJModel({ objPath, mtlPath, autoRotate }, ref) {
+const OBJModel = forwardRef(function OBJModel({ objPath, mtlPath, autoRotate, partyMode, audioRef }, ref) {
   const groupRef = useRef()
 
   // Expose the internal group via the forwarded ref
@@ -85,10 +85,99 @@ const OBJModel = forwardRef(function OBJModel({ objPath, mtlPath, autoRotate }, 
     }
   }, [scene])
 
-  // Auto-rotate (disabled while a transform gizmo is active)
+  // Load the beat map once on mount
+  const [beatMap, setBeatMap] = useState([])
+  useEffect(() => {
+    fetch('./assets/audio/beatmap.json')
+      .then(res => res.json())
+      .then(data => setBeatMap(data))
+      .catch(() => console.warn('No beatmap.json found — party mode will animate continuously'))
+  }, [])
+
+  // Smoothed amplitude for lerping animation on/off
+  const smoothAmplitude = useRef(0)
+
+  // Animation loop
   useFrame((_, delta) => {
-    if (autoRotate && groupRef.current) {
-      groupRef.current.rotation.y += delta * 0.3
+    if (!groupRef.current) return
+
+    if (partyMode) {
+      let target = 0
+
+      if (audioRef?.current && beatMap.length > 0) {
+        const t = audioRef.current.currentTime
+        // Check if the current playback time falls within any beat interval
+        const inBeat = beatMap.some(([start, end]) => t >= start && t <= end)
+        target = inBeat ? 1.5 : 0
+      } else {
+        // No beat map loaded — animate at full intensity as fallback
+        target = 1
+      }
+
+      if (target > 0) {
+        // In a beat — ramp up quickly
+        smoothAmplitude.current = THREE.MathUtils.lerp(smoothAmplitude.current, target, 0.4)
+
+        const amp = smoothAmplitude.current
+        const time = _.clock.elapsedTime
+
+        // 1. Spin rapidly
+        groupRef.current.rotation.y += delta * 14 * amp
+
+        // 2. Bounce rhythmically
+        groupRef.current.position.y = Math.abs(Math.sin(time * 12)) * 0.3 * amp
+
+        // 3. Cycle colors
+        groupRef.current.traverse((child) => {
+          if (child.isMesh && child.material) {
+            const mats = Array.isArray(child.material) ? child.material : [child.material]
+            mats.forEach((mat) => {
+              if (!mat.userData.originalColor) {
+                mat.userData.originalColor = mat.color.clone()
+              }
+              mat.color.setHSL(((time * 0.5) + (amp * 0.15)) % 1, 1, 0.6)
+            })
+          }
+        })
+      } else {
+        // Beat ended — INSTANT snap back
+        smoothAmplitude.current = 0
+        groupRef.current.position.y = 0
+        groupRef.current.rotation.y = 0 // face camera
+
+        // Instantly restore original colors
+        groupRef.current.traverse((child) => {
+          if (child.isMesh && child.material) {
+            const mats = Array.isArray(child.material) ? child.material : [child.material]
+            mats.forEach((mat) => {
+              if (mat.userData.originalColor) {
+                mat.color.copy(mat.userData.originalColor)
+                delete mat.userData.originalColor
+              }
+            })
+          }
+        })
+      }
+    } else {
+      // Restore normal state
+      groupRef.current.position.y = THREE.MathUtils.lerp(groupRef.current.position.y, 0, 0.1)
+
+      groupRef.current.traverse((child) => {
+        if (child.isMesh && child.material) {
+          const mats = Array.isArray(child.material) ? child.material : [child.material]
+          mats.forEach((mat) => {
+            if (mat.userData.originalColor) {
+              mat.color.copy(mat.userData.originalColor)
+              delete mat.userData.originalColor // Only restore once
+            }
+          })
+        }
+      })
+
+      // Normal auto-rotate (disabled while a transform gizmo is active)
+      if (autoRotate) {
+        groupRef.current.rotation.y += delta * 0.3
+      }
     }
   })
 
@@ -126,10 +215,10 @@ function ControlsHint({ transformMode }) {
   const modeLabel = transformMode === 'translate'
     ? '⬛ Move (W)'
     : transformMode === 'rotate'
-    ? '↻ Rotate (E)'
-    : transformMode === 'scale'
-    ? '⤢ Scale (R)'
-    : null
+      ? '↻ Rotate (E)'
+      : transformMode === 'scale'
+        ? '⤢ Scale (R)'
+        : null
 
   return (
     <div className="absolute bottom-3 left-1/2 -translate-x-1/2 z-10 pointer-events-none flex flex-col items-center gap-1.5">
