@@ -107,7 +107,7 @@ function FloatingLabel({ position = [0, 1.6, 0], label = 'Cowboy the cat', hidde
         distanceFactor={5}
         style={{ opacity: hidden ? 0 : 1, transition: 'opacity 0.3s', pointerEvents: 'none' }}
       >
-        <div style={{
+        <div className="floating-label-container" style={{
           display: 'flex',
           alignItems: 'center',
           gap: '6px',
@@ -131,11 +131,19 @@ function FloatingLabel({ position = [0, 1.6, 0], label = 'Cowboy the cat', hidde
             {label}
           </span>
         </div>
-        {/* Inject keyframe animation into the document once */}
+        {/* Inject keyframe animation and responsive scaling into the document once */}
         <style>{`
           @keyframes labelPulse {
             0%, 100% { box-shadow: 0 4px 24px rgba(124,58,237,0.4), 0 0 0 1px rgba(167,139,250,0.15); }
             50% { box-shadow: 0 4px 32px rgba(124,58,237,0.7), 0 0 0 2px rgba(167,139,250,0.35); }
+          }
+          
+          /* Scale down the label on mobile screens */
+          @media (max-width: 640px) {
+            .floating-label-container {
+              transform: scale(0.7);
+              transform-origin: bottom center;
+            }
           }
         `}</style>
       </Html>

@@ -138,8 +138,18 @@ function ControlsHint({ transformMode }) {
           {modeLabel}
         </div>
       )}
-      <div className="bg-slate-950/70 backdrop-blur-sm text-slate-400 text-xs px-4 py-2 rounded-full border border-slate-700/50">
-        {transformMode ? 'Drag gizmo to transform · Q to exit' : 'Drag to orbit · Scroll to zoom · W/E/R to transform'}
+      <div className="bg-slate-950/70 backdrop-blur-sm text-slate-400 text-xs px-4 py-2 rounded-full border border-slate-700/50 whitespace-nowrap">
+        {transformMode ? (
+          <>
+            Drag gizmo to transform
+            <span className="hidden sm:inline"> &middot; Q to exit</span>
+          </>
+        ) : (
+          <>
+            Drag to orbit
+            <span className="hidden sm:inline"> &middot; Scroll to zoom &middot; W/E/R to transform</span>
+          </>
+        )}
       </div>
     </div>
   )
