@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, Suspense } from 'react'
 import { motion } from 'framer-motion'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
@@ -7,7 +7,6 @@ import Hero from './pages/Hero'
 import About from './pages/About'
 import Publications from './pages/Publications'
 import Projects from './pages/Projects'
-import Skills from './pages/Skills'
 
 function App() {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -29,7 +28,6 @@ function App() {
         <About />
         <Publications />
         <Projects />
-        <Skills />
       </main>
       <Footer />
       <BackToTop />
