@@ -41,8 +41,24 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
 
               {/* Content */}
               <div className="p-6 space-y-6">
-                {/* Main image */}
-                {project.image && (
+                {/* Embedded video (if available) */}
+                {project.videoUrl && (
+                  <div className="w-full rounded-xl overflow-hidden border border-slate-700 shadow-lg">
+                    <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
+                      <iframe
+                        src={project.videoUrl}
+                        title={project.title}
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowFullScreen
+                        className="absolute inset-0 w-full h-full"
+                        style={{ border: 'none' }}
+                      />
+                    </div>
+                  </div>
+                )}
+
+                {/* Main image (shown only when no video) */}
+                {!project.videoUrl && project.image && (
                   <div className="w-full rounded-lg overflow-hidden">
                     <img
                       src={project.image}

@@ -9,7 +9,7 @@ import * as THREE from 'three'
  * Automatically centers and scales the model to fit the viewport.
  */
 // forwardRef so TransformControls in the parent can attach to the group node
-const OBJModel = forwardRef(function OBJModel({ objPath, mtlPath, autoRotate, partyMode, audioRef }, ref) {
+const OBJModel = forwardRef(function OBJModel({ objPath, mtlPath, autoRotate, partyMode, audioRef, onLevelChange }, ref) {
   const groupRef = useRef()
 
   // Expose the internal group via the forwarded ref
@@ -85,65 +85,91 @@ const OBJModel = forwardRef(function OBJModel({ objPath, mtlPath, autoRotate, pa
     }
   }, [scene])
 
-  // Load the beat map once on mount
-  const [beatMap, setBeatMap] = useState([])
+  // Load the beat map once on mount (now leveled format)
+  const [beatMap, setBeatMap] = useState({ level1: [], level2: [], level3: [] })
   useEffect(() => {
     fetch('./assets/audio/beatmap.json')
       .then(res => res.json())
-      .then(data => setBeatMap(data))
+      .then(data => {
+        if (data && data.level1) {
+          setBeatMap(data)
+        } else if (Array.isArray(data)) {
+          // Legacy flat array → treat as level1
+          setBeatMap({ level1: data, level2: [], level3: [] })
+        }
+      })
       .catch(() => console.warn('No beatmap.json found — party mode will animate continuously'))
   }, [])
 
   // Smoothed amplitude for lerping animation on/off
   const smoothAmplitude = useRef(0)
+  // Track previous level to avoid spamming the callback
+  const prevLevel = useRef(0)
+
+  // Helper: determine the highest active level at a given timestamp.
+  // A level N is only active if level 1 is also active (prerequisite).
+  const getLevel = (t) => {
+    const inInterval = (arr) => arr.some(([s, e]) => t >= s && t <= e)
+    const l1 = inInterval(beatMap.level1)
+    if (!l1) return 0
+    // Level 1 is the gatekeeper — higher levels only unlock on top of it
+    if (inInterval(beatMap.level3)) return 3
+    if (inInterval(beatMap.level2)) return 2
+    return 1
+
+  }
 
   // Animation loop
   useFrame((_, delta) => {
     if (!groupRef.current) return
 
     if (partyMode) {
-      let target = 0
+      let level = 0
 
-      if (audioRef?.current && beatMap.length > 0) {
-        const t = audioRef.current.currentTime
-        // Check if the current playback time falls within any beat interval
-        const inBeat = beatMap.some(([start, end]) => t >= start && t <= end)
-        target = inBeat ? 1.5 : 0
-      } else {
-        // No beat map loaded — animate at full intensity as fallback
-        target = 1
+      if (audioRef?.current) {
+        level = getLevel(audioRef.current.currentTime)
       }
 
-      if (target > 0) {
-        // In a beat — ramp up quickly
+      // Notify parent of level changes (for rave lights)
+      if (level !== prevLevel.current) {
+        prevLevel.current = level
+        onLevelChange?.(level)
+      }
+
+      if (level > 0) {
+        const target = 1.5
+        // Ramp up quickly
         smoothAmplitude.current = THREE.MathUtils.lerp(smoothAmplitude.current, target, 0.4)
 
         const amp = smoothAmplitude.current
         const time = _.clock.elapsedTime
 
-        // 1. Spin rapidly
+        // Level 1+: Spin rapidly
         groupRef.current.rotation.y += delta * 14 * amp
 
-        // 2. Bounce rhythmically
+        // Level 1+: Bounce rhythmically
         groupRef.current.position.y = Math.abs(Math.sin(time * 12)) * 0.3 * amp
 
-        // 3. Cycle colors
-        groupRef.current.traverse((child) => {
-          if (child.isMesh && child.material) {
-            const mats = Array.isArray(child.material) ? child.material : [child.material]
-            mats.forEach((mat) => {
-              if (!mat.userData.originalColor) {
-                mat.userData.originalColor = mat.color.clone()
-              }
-              mat.color.setHSL(((time * 0.5) + (amp * 0.15)) % 1, 1, 0.6)
-            })
-          }
-        })
+        // Level 2+: Cycle colors
+        if (level >= 2) {
+          groupRef.current.traverse((child) => {
+            if (child.isMesh && child.material) {
+              const mats = Array.isArray(child.material) ? child.material : [child.material]
+              mats.forEach((mat) => {
+                if (!mat.userData.originalColor) {
+                  mat.userData.originalColor = mat.color.clone()
+                }
+                mat.color.setHSL(((time * 0.5) + (amp * 0.15)) % 1, 1, 0.6)
+              })
+            }
+          })
+        }
+        // Level 3 rave lights are handled in the parent scene via onLevelChange
       } else {
-        // Beat ended — INSTANT snap back
+        // No active interval — INSTANT snap back
         smoothAmplitude.current = 0
         groupRef.current.position.y = 0
-        groupRef.current.rotation.y = 0 // face camera
+        groupRef.current.rotation.y = 0
 
         // Instantly restore original colors
         groupRef.current.traverse((child) => {

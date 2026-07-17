@@ -57,6 +57,7 @@ const Projects = () => {
       description: 'An endless space flyer for the Arduino joystick! Navigate your jet through an asteroid field.',
       tech: 'Processing, Java, Arduino',
       category: 'games',
+      videoUrl: 'https://www.youtube.com/embed/4XButFk4vBE',
       links: [
         { text: 'Github', url: 'https://github.com/Joel-CA/AnovaSpaceAdventure' },
         { text: 'Play on itch.io', url: 'https://joel-ca.itch.io/anova-space-adventure' },
@@ -72,6 +73,7 @@ const Projects = () => {
       description: 'Minecraft Fabric Mod with spheres that interact with physics and custom shaders.',
       tech: 'Minecraft Fabric Mod, Java',
       category: 'games',
+      videoUrl: 'https://www.youtube.com/embed/OcBq2-588C8',
       links: [
         { text: 'Github', url: 'https://github.com/jordan-duan/184-final' },
         { text: 'CurseForge Mod', url: 'https://www.curseforge.com/minecraft/mc-mods/spheres-physics' },
@@ -199,6 +201,7 @@ const Projects = () => {
       description: 'Animated short produced in a team for UC Berkeley\'s UCBUGG community showcase.',
       tech: 'Maya, After Effects, Animated Short',
       category: 'animation',
+      videoUrl: 'https://www.youtube.com/embed/mOlBL_qqE-Q',
       links: [
         { text: 'Watch on YouTube', url: 'https://www.youtube.com/embed/mOlBL_qqE-Q' },
       ],
@@ -222,6 +225,7 @@ const Projects = () => {
       description: 'Projection-based rendering in Processing with 3D model importing and performance optimizations.',
       tech: 'Processing, Java',
       category: 'graphics',
+      videoUrl: 'https://www.youtube.com/embed/Q6nHebSofoQ',
       links: [
         { text: 'Github', url: 'https://github.com/Joel-CA/projectionBasedRenderingInProcessing' },
         { text: 'Play on itch.io', url: 'https://joel-ca.itch.io/projection-based-rendering' },
@@ -237,6 +241,7 @@ const Projects = () => {
       description: 'UE5 portal gun inspired by Valve\'s Portal game with momentum conservation and item teleportation.',
       tech: 'Unreal Engine 5',
       category: 'games',
+      videoUrl: 'https://www.youtube.com/embed/0RrBIWU3Qg4',
       links: [
         { text: 'Demo Video', url: 'https://www.youtube.com/embed/0RrBIWU3Qg4' },
       ],
@@ -313,6 +318,7 @@ const Projects = () => {
       description: 'First 3D animated short with modeling, rigging, animation, and rendering.',
       tech: 'Maya, After Effects, Animated Short',
       category: 'animation',
+      videoUrl: 'https://www.youtube.com/embed/a063XUSM7wo',
       links: [
         { text: 'Watch on YouTube', url: 'https://www.youtube.com/embed/a063XUSM7wo' },
       ],
@@ -335,6 +341,7 @@ const Projects = () => {
       description: "Inspired by Atom Egoyan's techniques, exploring the interconnectedness of language and culture.",
       tech: 'Premiere Pro, Narrative Short Film',
       category: 'film',
+      videoUrl: 'https://www.youtube.com/embed/eP231yEMXqw',
       links: [
         { text: 'View on FilmFreeway', url: 'https://filmfreeway.com/Essay437' },
         { text: 'Watch on YouTube', url: 'https://www.youtube.com/embed/eP231yEMXqw' },
@@ -365,6 +372,7 @@ const Projects = () => {
       description: 'Visually aesthetic cave-themed platformer. Collect gems, don\'t fall, get rich!',
       tech: 'Processing, Java',
       category: 'games',
+      videoUrl: 'https://www.youtube.com/embed/NJtRTk5r7jk',
       links: [
         { text: 'Play on itch.io', url: 'https://joel-ca.itch.io/cave-explorer' },
         { text: 'Github', url: 'https://github.com/Joel-CA/cave-explorer/tree/main' },

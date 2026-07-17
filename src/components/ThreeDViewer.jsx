@@ -152,12 +152,103 @@ function FloatingLabel({ position = [0, 1.6, 0], label = 'Cowboy the cat', hidde
 }
 
 /**
+ * Rave lights — explosive strobing colored lights + white flash for level 3.
+ * Uses HDR-range intensities (requires ACESFilmic tone mapping on the Canvas).
+ */
+function RaveLights({ active }) {
+  const light1 = useRef()
+  const light2 = useRef()
+  const light3 = useRef()
+  const whiteStrobe = useRef()
+  const ambientRave = useRef()
+
+  // Saturated rave colors — set with multiplyScalar for HDR brightness
+  const raveColors = useMemo(() => [
+    new THREE.Color(4, 0, 0.3),   // hot pink
+    new THREE.Color(0, 4, 0.5),   // neon green
+    new THREE.Color(0, 0.5, 5),   // electric blue
+    new THREE.Color(5, 1.5, 0),   // orange
+    new THREE.Color(3, 0, 5),     // purple
+    new THREE.Color(0, 3, 5),     // cyan
+    new THREE.Color(5, 5, 0),     // yellow
+  ], [])
+
+  useFrame((state) => {
+    const t = state.clock.elapsedTime
+
+    if (!active) {
+      // Hard cut all lights off instantly
+      if (light1.current) light1.current.intensity = 0
+      if (light2.current) light2.current.intensity = 0
+      if (light3.current) light3.current.intensity = 0
+      if (whiteStrobe.current) whiteStrobe.current.intensity = 0
+      if (ambientRave.current) ambientRave.current.intensity = 0
+      return
+    }
+
+    // Each colored light snaps to a new color at different BPM-like intervals
+    const i1 = Math.floor(t * 7) % raveColors.length
+    const i2 = Math.floor(t * 11 + 2) % raveColors.length
+    const i3 = Math.floor(t * 9 + 4) % raveColors.length
+
+    // Strobe patterns: hard square-wave at different frequencies
+    const s1 = Math.sin(t * 23) > 0 ? 1 : 0
+    const s2 = Math.sin(t * 31 + 1) > 0 ? 1 : 0
+    const s3 = Math.sin(t * 17 + 2) > 0 ? 1 : 0
+    // White strobe fires fastest for the 'flash' effect
+    const sw = Math.sin(t * 47) > 0.5 ? 1 : 0
+
+    if (light1.current) {
+      light1.current.color.copy(raveColors[i1])
+      light1.current.intensity = s1 * 60
+    }
+    if (light2.current) {
+      light2.current.color.copy(raveColors[i2])
+      light2.current.intensity = s2 * 60
+    }
+    if (light3.current) {
+      light3.current.color.copy(raveColors[i3])
+      light3.current.intensity = s3 * 50
+    }
+    // White strobe: pure white blinding flash from above
+    if (whiteStrobe.current) {
+      whiteStrobe.current.intensity = sw * 80
+    }
+    // Ambient rave glow pulses the whole scene between colors
+    if (ambientRave.current) {
+      const ai = Math.floor(t * 4) % raveColors.length
+      ambientRave.current.color.copy(raveColors[ai])
+      ambientRave.current.intensity = 0.6 + Math.abs(Math.sin(t * 8)) * 1.2
+    }
+  })
+
+  return (
+    <>
+      {/* Colored floodlights from multiple angles */}
+      <pointLight ref={light1} position={[2, 2, 1.5]} intensity={0} distance={15} />
+      <pointLight ref={light2} position={[-2, 1.5, -1.5]} intensity={0} distance={15} />
+      <pointLight ref={light3} position={[0, -0.5, 3]} intensity={0} distance={15} />
+      {/* White strobe from directly above */}
+      <pointLight ref={whiteStrobe} position={[0, 5, 0]} color="#ffffff" intensity={0} distance={20} />
+      {/* Ambient rave fill — washes entire scene in pulsing color */}
+      <ambientLight ref={ambientRave} intensity={0} />
+    </>
+  )
+}
+
+/**
  * Inner scene component that has access to the R3F renderer context.
  * Handles TransformControls + OrbitControls coordination.
  */
 function SceneContents({ selectedScan, autoRotate, transformMode, partyMode, audioRef }) {
   const modelRef = useRef()
   const orbitRef = useRef()
+  const [partyLevel, setPartyLevel] = useState(0)
+
+  // Reset rave lights when party mode is toggled off
+  useEffect(() => {
+    if (!partyMode) setPartyLevel(0)
+  }, [partyMode])
 
   // Disable OrbitControls while dragging the transform gizmo
   const handleTransformStart = useCallback(() => {
@@ -174,6 +265,9 @@ function SceneContents({ selectedScan, autoRotate, transformMode, partyMode, aud
       <directionalLight position={[-5, 5, -3]} intensity={0.6} color="#b0c4ff" />
       <directionalLight position={[0, -3, 5]} intensity={0.3} color="#ffd4a0" />
 
+      {/* Rave lights — only active during level 3 */}
+      <RaveLights active={partyLevel >= 3} />
+
       <OBJModel
         ref={modelRef}
         key={selectedScan.id}
@@ -182,6 +276,7 @@ function SceneContents({ selectedScan, autoRotate, transformMode, partyMode, aud
         autoRotate={autoRotate && !transformMode}
         partyMode={partyMode}
         audioRef={audioRef}
+        onLevelChange={setPartyLevel}
       />
 
       {/* Floating 3D label */}
@@ -297,7 +392,7 @@ const ThreeDViewer = () => {
               {selectedScan && (
                 <Canvas
                   camera={{ position: [0, 1, 4], fov: 45 }}
-                  gl={{ antialias: true, preserveDrawingBuffer: true }}
+                  gl={{ antialias: true, preserveDrawingBuffer: true, toneMapping: THREE.ACESFilmicToneMapping, toneMappingExposure: 1.2 }}
                   dpr={[1, 1.5]}
                   style={{ borderRadius: 'inherit' }}
                   onCreated={({ scene }) => {
