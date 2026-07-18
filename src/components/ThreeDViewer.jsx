@@ -65,38 +65,55 @@ function WebGLFallback({ scan }) {
  * Animated floating label that hovers above the model with a connector stem.
  * Uses drei's Html so the badge is always screen-facing (billboard).
  */
-function FloatingLabel({ position = [0, 1.6, 0], label = 'Cowboy the cat', hidden = false, stemLength = 0.55 }) {
+function FloatingLabel({ position = [0, 1.6, 0], label = 'Cowboy the cat', hidden = false, modelRef }) {
   const groupRef = useRef()
+  const lineRef = useRef()
+  const dotRef = useRef()
 
   // Sine-wave float: drifts up and down ~0.12 units at ~0.6 Hz
   useFrame(({ clock }) => {
     if (groupRef.current) {
       groupRef.current.position.y = position[1] + Math.sin(clock.elapsedTime * 1.2) * 0.12
     }
+
+    if (modelRef && modelRef.current && lineRef.current && dotRef.current) {
+      // Calculate the object's world position relative to the label's local space
+      const modelPos = modelRef.current.position
+      const labelPos = groupRef.current.position
+      
+      const localTarget = new THREE.Vector3().subVectors(modelPos, labelPos)
+      
+      // Update line points
+      const positions = lineRef.current.geometry.attributes.position.array
+      positions[3] = localTarget.x
+      positions[4] = localTarget.y
+      positions[5] = localTarget.z
+      lineRef.current.geometry.attributes.position.needsUpdate = true
+      
+      // Update dot position
+      dotRef.current.position.copy(localTarget)
+    }
   })
 
   // Stem geometry — a thin vertical line from model surface to label
-  const stemPoints = useMemo(() => {
-    const pts = [new THREE.Vector3(0, 0, 0), new THREE.Vector3(0, -stemLength, 0)]
-    return pts
-  }, [stemLength])
-
   const stemGeometry = useMemo(() => {
-    const geo = new THREE.BufferGeometry().setFromPoints(stemPoints)
-    return geo
-  }, [stemPoints])
+    const pts = [new THREE.Vector3(0, 0, 0), new THREE.Vector3(0, -0.75, 0)]
+    return new THREE.BufferGeometry().setFromPoints(pts)
+  }, [])
 
   const stemMaterial = useMemo(() => {
     return new THREE.LineBasicMaterial({ color: '#a78bfa', opacity: 0.7, transparent: true })
   }, [])
 
+  const lineObject = useMemo(() => new THREE.Line(stemGeometry, stemMaterial), [stemGeometry, stemMaterial])
+
   return (
     <group ref={groupRef} position={position}>
       {/* Connector stem */}
-      <primitive object={new THREE.Line(stemGeometry, stemMaterial)} />
+      <primitive ref={lineRef} object={lineObject} />
 
       {/* Dot at attachment point */}
-      <mesh position={[0, -stemLength, 0]}>
+      <mesh ref={dotRef} position={[0, -0.75, 0]}>
         <sphereGeometry args={[0.03, 10, 10]} />
         <meshStandardMaterial color="#a78bfa" emissive="#7c3aed" emissiveIntensity={0.6} />
       </mesh>
@@ -281,10 +298,10 @@ function SceneContents({ selectedScan, autoRotate, transformMode, partyMode, aud
 
       {/* Floating 3D label */}
       <FloatingLabel
-        position={[0.4, 0.9, 0]}
-        stemLength={0.75}
+        position={[0.4, 1.5, 0]}
         label="Cowboy the cat"
         hidden={!!transformMode}
+        modelRef={modelRef}
       />
 
       {/* TransformControls — only rendered when a mode is active */}

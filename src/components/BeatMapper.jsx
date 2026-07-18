@@ -32,8 +32,10 @@ const BeatMapper = () => {
   const currentIntervalStart = useRef(null)
   const animFrameRef = useRef(null)
 
-  // Which level we're recording
-  const [activeLevel, setActiveLevel] = useState('level2')
+  const [activeLevel, setActiveLevel] = useState('level1')
+
+  // Spin speed modifier
+  const [currentSpinSpeed, setCurrentSpinSpeed] = useState(1)
 
   // All levels of intervals
   const [beatMap, setBeatMap] = useState({ level1: [], level2: [], level3: [] })
@@ -84,7 +86,8 @@ const BeatMapper = () => {
         if (end > start + 0.05) {
           const interval = [
             Math.round(start * 100) / 100,
-            Math.round(end * 100) / 100
+            Math.round(end * 100) / 100,
+            parseFloat(currentSpinSpeed)
           ]
           setBeatMap(prev => ({
             ...prev,
@@ -168,31 +171,44 @@ const BeatMapper = () => {
         onEnded={() => setIsPlaying(false)}
       />
 
-      {/* Level selector */}
-      <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '1rem' }}>
-        {Object.entries(LEVEL_COLORS).map(([key, val]) => {
-          const isActive = activeLevel === key
-          const isReadOnly = key === 'level1'
-          return (
-            <button
-              key={key}
-              onClick={() => !isReadOnly && setActiveLevel(key)}
-              style={{
-                ...btnStyle,
-                background: isActive ? val.bg : '#1e293b',
-                borderColor: isActive ? val.border : '#475569',
-                color: isActive ? val.label : '#94a3b8',
-                opacity: isReadOnly ? 0.5 : 1,
-                cursor: isReadOnly ? 'not-allowed' : 'pointer',
-              }}
-            >
-              {key === 'level1' ? '🔒 ' : ''}{val.name}
-              <span style={{ fontSize: '0.7rem', marginLeft: '0.5rem', opacity: 0.7 }}>
-                ({(beatMap[key] || []).length})
-              </span>
-            </button>
-          )
-        })}
+      {/* Level selector and Spin Speed */}
+      <div style={{ display: 'flex', gap: '1.5rem', marginBottom: '1rem', alignItems: 'center' }}>
+        <div style={{ display: 'flex', gap: '0.5rem' }}>
+          {Object.entries(LEVEL_COLORS).map(([key, val]) => {
+            const isActive = activeLevel === key
+            return (
+              <button
+                key={key}
+                onClick={() => setActiveLevel(key)}
+                style={{
+                  ...btnStyle,
+                  background: isActive ? val.bg : '#1e293b',
+                  borderColor: isActive ? val.border : '#475569',
+                  color: isActive ? val.label : '#94a3b8',
+                }}
+              >
+                {val.name}
+                <span style={{ fontSize: '0.7rem', marginLeft: '0.5rem', opacity: 0.7 }}>
+                  ({(beatMap[key] || []).length})
+                </span>
+              </button>
+            )
+          })}
+        </div>
+
+        {/* Spin Speed Slider */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', background: '#1e293b', padding: '0.5rem 1rem', borderRadius: '8px', border: '1px solid #475569' }}>
+          <label style={{ fontSize: '0.875rem', fontWeight: 600 }}>Speed: {currentSpinSpeed}x</label>
+          <input 
+            type="range" 
+            min="0.1" 
+            max="5" 
+            step="0.1" 
+            value={currentSpinSpeed} 
+            onChange={(e) => setCurrentSpinSpeed(e.target.value)} 
+            style={{ width: '100px' }}
+          />
+        </div>
       </div>
 
       {/* Controls */}
@@ -325,13 +341,13 @@ const BeatMapper = () => {
             background: '#1e293b', borderRadius: '8px', padding: '0.75rem',
             fontSize: '0.8rem', fontFamily: 'monospace',
           }}>
-            {activeIntervals.map(([start, end], i) => (
+            {activeIntervals.map(([start, end, speed], i) => (
               <div key={i} style={{
                 display: 'flex', justifyContent: 'space-between',
                 padding: '0.25rem 0.5rem', borderBottom: '1px solid #334155',
               }}>
                 <span style={{ color: activeLevelColor.label }}>#{i + 1}</span>
-                <span>{formatTime(start)} → {formatTime(end)}</span>
+                <span>{formatTime(start)} → {formatTime(end)} {speed !== undefined && <span style={{color: '#f59e0b', marginLeft: '0.5rem'}}>[{speed}x]</span>}</span>
                 <span style={{ color: '#94a3b8' }}>({(end - start).toFixed(2)}s)</span>
               </div>
             ))}

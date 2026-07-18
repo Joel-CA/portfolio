@@ -103,20 +103,27 @@ const OBJModel = forwardRef(function OBJModel({ objPath, mtlPath, autoRotate, pa
 
   // Smoothed amplitude for lerping animation on/off
   const smoothAmplitude = useRef(0)
+  // Smoothed spin speed modifier
+  const smoothSpeed = useRef(1)
   // Track previous level to avoid spamming the callback
   const prevLevel = useRef(0)
 
-  // Helper: determine the highest active level at a given timestamp.
-  // A level N is only active if level 1 is also active (prerequisite).
-  const getLevel = (t) => {
-    const inInterval = (arr) => arr.some(([s, e]) => t >= s && t <= e)
-    const l1 = inInterval(beatMap.level1)
-    if (!l1) return 0
-    // Level 1 is the gatekeeper — higher levels only unlock on top of it
-    if (inInterval(beatMap.level3)) return 3
-    if (inInterval(beatMap.level2)) return 2
-    return 1
+  // Helper: determine the highest active level and spin speed at a given timestamp.
+  const getActiveState = (t) => {
+    let speed = 1
+    const l1Interval = beatMap.level1.find(([s, e]) => t >= s && t <= e)
+    
+    if (!l1Interval) return { level: 0, speed: 1 }
+    
+    if (l1Interval.length > 2) {
+      speed = l1Interval[2]
+    }
 
+    const inInterval = (arr) => arr.some(([s, e]) => t >= s && t <= e)
+    
+    if (inInterval(beatMap.level3)) return { level: 3, speed }
+    if (inInterval(beatMap.level2)) return { level: 2, speed }
+    return { level: 1, speed }
   }
 
   // Animation loop
@@ -125,9 +132,12 @@ const OBJModel = forwardRef(function OBJModel({ objPath, mtlPath, autoRotate, pa
 
     if (partyMode) {
       let level = 0
+      let speed = 1
 
       if (audioRef?.current) {
-        level = getLevel(audioRef.current.currentTime)
+        const state = getActiveState(audioRef.current.currentTime)
+        level = state.level
+        speed = state.speed
       }
 
       // Notify parent of level changes (for rave lights)
@@ -140,12 +150,13 @@ const OBJModel = forwardRef(function OBJModel({ objPath, mtlPath, autoRotate, pa
         const target = 1.5
         // Ramp up quickly
         smoothAmplitude.current = THREE.MathUtils.lerp(smoothAmplitude.current, target, 0.4)
+        smoothSpeed.current = THREE.MathUtils.lerp(smoothSpeed.current, speed, 0.2)
 
         const amp = smoothAmplitude.current
         const time = _.clock.elapsedTime
 
-        // Level 1+: Spin rapidly
-        groupRef.current.rotation.y += delta * 14 * amp
+        // Level 1+: Spin rapidly (scaled by speed multiplier)
+        groupRef.current.rotation.y += delta * 14 * amp * smoothSpeed.current
 
         // Level 1+: Bounce rhythmically
         groupRef.current.position.y = Math.abs(Math.sin(time * 12)) * 0.3 * amp
@@ -168,6 +179,7 @@ const OBJModel = forwardRef(function OBJModel({ objPath, mtlPath, autoRotate, pa
       } else {
         // No active interval — INSTANT snap back
         smoothAmplitude.current = 0
+        smoothSpeed.current = 1
         groupRef.current.position.y = 0
         groupRef.current.rotation.y = 0
 
