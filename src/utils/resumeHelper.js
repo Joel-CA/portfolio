@@ -5,6 +5,8 @@
 export const getLatestResumePath = () => {
   // List of available resumes - update this if you add new ones
   const resumes = [
+    { name: 'Joel Castro - Research Resume (7_19_26).pdf', date: new Date(2026, 6, 19) },
+    { name: 'Joel Castro - Tech Resume (7_8_26).pdf', date: new Date(2026, 6, 8) },
     { name: 'Joel Castro - Tech Resume (1_30_25).pdf', date: new Date(2025, 0, 30) },
     { name: 'Joel Castro - Tech Resume (6_12_26).pdf', date: new Date(2026, 5, 12) },
     { name: 'Joel Castro - Tech Resume (7_9_24).pdf', date: new Date(2024, 6, 9) },
@@ -17,5 +19,5 @@ export const getLatestResumePath = () => {
     current.date > prev.date ? current : prev
   )
 
-  return `/assets/resumes/${latest.name}`
+  return `./assets/resumes/${latest.name}`
 }
