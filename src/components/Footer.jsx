@@ -92,7 +92,7 @@ const Footer = () => {
               className="text-slate-400 hover:text-primary-400 transition flex items-center justify-center md:justify-end gap-2"
             >
               <Mail size={18} />
-              joelcast [at] usc [dot] edu
+              joelcast@usc.edu
             </a>
           </motion.div>
         </div>

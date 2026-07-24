@@ -72,7 +72,6 @@ const About = () => {
               >
                 {[
                   { label: 'From:', value: 'San Diego, CA' },
-                  { label: 'Age:', value: '22' },
                   { label: 'Pronouns:', value: 'He/Him/His' },
                   { label: 'Cat dad of:', value: 'Milo, Mitchu, Sol, Rumi, and Cowboy' },
                 ].map((fact, idx) => (
