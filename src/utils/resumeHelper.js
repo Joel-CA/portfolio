@@ -1,23 +1,13 @@
 /**
- * Utility to find the latest resume based on date in filename
- * Filename format: "Joel Castro - Tech Resume (M_D_YY).pdf"
+ * Returns the path to the latest resume PDF.
+ *
+ * The filename is auto-detected at build time by vite.config.js — it scans
+ * public/assets/resumes/ and picks the file with the newest (M_D_YY) date.
+ * No manual list to maintain: just drop a new PDF into that folder and rebuild.
+ *
+ * Uses import.meta.env.BASE_URL so the path resolves correctly on GitHub Pages.
  */
 export const getLatestResumePath = () => {
-  // List of available resumes - update this if you add new ones
-  const resumes = [
-    { name: 'Joel Castro - Research Resume (7_19_26).pdf', date: new Date(2026, 6, 19) },
-    { name: 'Joel Castro - Tech Resume (7_8_26).pdf', date: new Date(2026, 6, 8) },
-    { name: 'Joel Castro - Tech Resume (1_30_25).pdf', date: new Date(2025, 0, 30) },
-    { name: 'Joel Castro - Tech Resume (6_12_26).pdf', date: new Date(2026, 5, 12) },
-    { name: 'Joel Castro - Tech Resume (7_9_24).pdf', date: new Date(2024, 6, 9) },
-    { name: 'Joel Castro - Tech Resume (8_24_25).pdf', date: new Date(2025, 7, 24) },
-    { name: 'Joel Castro - Tech Resume (8_7_24).pdf', date: new Date(2024, 7, 7) },
-  ]
-
-  // Find the resume with the latest date
-  const latest = resumes.reduce((prev, current) =>
-    current.date > prev.date ? current : prev
-  )
-
-  return `./assets/resumes/${latest.name}`
+  return `${import.meta.env.BASE_URL}assets/resumes/${__LATEST_RESUME__}`
 }
+
