@@ -17,6 +17,7 @@ const Publications = () => {
       authors: 'Austin Patel, Ben Pekarek, Joel E. Castro Hernandez, Shuran Song',
       venue: 'Conference on Robot Learning (CoRL), 2026',
       status: 'Pre-Print',
+      institution: { file: 'stanford.png', label: 'Stanford University', whiteBg: true },
       abstract: '"TL;DR: Reuse your existing robot demonstrations as in-context prompts during training. Then, at test time, you can prompt the in-context policy with a single demo to complete known or even new tasks."',
       posterImage: './assets/Posters/Teaching Robots to Write Preview.png',
       links: [
@@ -33,6 +34,7 @@ const Publications = () => {
       authors: 'Joel E. Castro Hernandez, Olohi Goodness John',
       venue: 'SPLASH, 2024',
       status: 'Published',
+      institution: { file: 'cmu.png', label: 'Carnegie Mellon University', whiteBg: true },
       abstract:
         'Visualizations play a significant role in writing, debugging, profiling, and generally understanding programs. However, little work has been done to understand the structure of program visualizations at a fundamental level— namely, why and how they scale. In this paper we present a theory of the interpretability of program visualizations focused on their abstraction and composition properties.',
       posterImage: './assets/Posters/Understanding Program Visualizations In The Wild Preview.png',
@@ -60,14 +62,15 @@ const Publications = () => {
       title: 'Interpretable biophysical neural networks of transcriptional activation domains separate roles of protein abundance and coactivator binding',
       authors:
         'Claire LeBlanc, Pooja Agarwal, Jack Demaray, Gean Hu, Marissa Zintel, Angelica Lam, Joel E. Castro Hernandez, Max Staller',
-      venue: 'Machine Learning in Computational Biology (MLCB), 2026',
-      status: 'Under Review (Preprint)',
+      venue: 'Cell Systems, 2026',
+      status: 'Published',
+      institution: { file: 'ucb.png', label: 'UC Berkeley', whiteBg: false },
       abstract:
         'Deep neural networks have improved biological prediction accuracy, but interpretation remains challenging. We designed simple neural networks incorporating biophysical models of transcriptional activation domains. These networks revealed how hydrophobic residues increase activation strength while decreasing protein abundance, and how acidic residues control both parameters. Combining biophysical and deep neural networks maximizes prediction accuracy and interpretability to yield insights into biological mechanisms.',
       links: [
         {
-          text: 'View Paper',
-          url: 'https://www.biorxiv.org/content/10.1101/2025.09.19.677413v1.full.pdf',
+          text: 'Paper',
+          url: 'https://doi.org/10.1016/j.cels.2026.101701',
         },
         {
           text: 'bioRxiv',
@@ -75,7 +78,7 @@ const Publications = () => {
         },
         {
           text: 'NIH PubMed',
-          url: 'https://pubmed.ncbi.nlm.nih.gov/41000786/',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/42607673/',
         },
       ],
     },
@@ -164,9 +167,26 @@ const Publications = () => {
               className="card-base overflow-hidden flex-shrink-0 w-full md:w-96 snap-start cursor-pointer"
             >
               <div className="p-6">
-                <h3 className="text-lg font-semibold text-primary-400 mb-3">
-                  {pub.title}
-                </h3>
+                {/* Title row with institution stamp */}
+                <div className="flex items-start gap-3 mb-3">
+                  <h3 className="text-lg font-semibold text-primary-400 flex-1">
+                    {pub.title}
+                  </h3>
+                  {pub.institution && (
+                    <div
+                      className={`flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-full border border-slate-600 shadow-md ${
+                        pub.institution.whiteBg ? 'bg-white' : 'bg-slate-800'
+                      }`}
+                      title={pub.institution.label}
+                    >
+                      <img
+                        src={`./assets/img/logos/${pub.institution.file}`}
+                        alt={pub.institution.label}
+                        className="w-8 h-8 object-contain"
+                      />
+                    </div>
+                  )}
+                </div>
 
                 <div className="space-y-2 mb-4 text-sm">
                   <p>

@@ -38,7 +38,7 @@ const About = () => {
           {/* Top Row: Image & Content */}
           <div className="grid md:grid-cols-2 gap-12 items-start">
             {/* Image with hover effect */}
-            <motion.div variants={itemVariants} className="flex justify-center">
+            <motion.div variants={itemVariants} className="flex flex-col items-center">
               <motion.div
                 className="relative w-full max-w-sm"
                 whileHover={{ scale: 1.02 }}
@@ -51,6 +51,41 @@ const About = () => {
                   className="relative rounded-2xl shadow-2xl border border-primary-500/20 w-full h-auto"
                 />
               </motion.div>
+
+              {/* University Affiliations */}
+              <motion.div
+                variants={itemVariants}
+                className="mt-5 w-full max-w-sm"
+              >
+                <p className="text-center text-xs text-slate-500 uppercase tracking-widest mb-3 font-medium">Studied & Worked At</p>
+                <div className="flex items-center justify-center gap-4 flex-wrap">
+                  {[
+                    { file: 'usc.png',      label: 'University of Southern California', whiteBg: true  },
+                    { file: 'ucb.png',      label: 'UC Berkeley',                       whiteBg: false },
+                    { file: 'stanford.png', label: 'Stanford University',               whiteBg: true  },
+                    { file: 'ucsf.png',     label: 'UC San Francisco',                  whiteBg: true  },
+                    { file: 'cmu.png',      label: 'Carnegie Mellon University',         whiteBg: true  },
+                  ].map((school) => (
+                    <motion.div
+                      key={school.file}
+                      whileHover={{ scale: 1.18, y: -4 }}
+                      transition={{ duration: 0.2 }}
+                      className={`group relative flex items-center justify-center w-12 h-12 rounded-full border border-slate-600 hover:border-slate-400 cursor-default shadow-md hover:shadow-lg transition-shadow duration-300 ${school.whiteBg ? 'bg-white' : 'bg-slate-800/80'}`}
+                      title={school.label}
+                    >
+                      <img
+                        src={`./assets/img/logos/${school.file}`}
+                        alt={school.label}
+                        className="w-10 h-10 object-contain transition-transform duration-300 drop-shadow-sm"
+                      />
+                      {/* Tooltip */}
+                      <div className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 bg-slate-900 text-white text-xs px-2 py-1 rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none border border-slate-700 z-10">
+                        {school.label}
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+              </motion.div>
             </motion.div>
 
             {/* Content */}
@@ -60,7 +95,7 @@ const About = () => {
               </h2>
 
               <p className="text-slate-300 text-lg leading-relaxed mb-6">
-                I'm a masters student at the University of Southern California (USC) majoring in computer science. My passions and
+                I'm a masters student at the University of Southern California (USC) majoring in computer science. I did my undergraduate studies at UC Berkeley where I also held research positions at Stanford, UCSF, and CMU. My passions and
                 interests lie in the realm of computer graphics, robotics, computer vision, simulations, and in particular,
                 the overlap these arenas have with animation, film, video games, and AR/VR.
               </p>
@@ -113,7 +148,7 @@ const About = () => {
           </div>
 
           {/* Bottom Row: 3D Viewer */}
-          <motion.div variants={itemVariants} className="w-4/5 mx-auto">
+          <motion.div variants={itemVariants} className="w-full sm:w-4/5 mx-auto">
             <ThreeDViewer />
           </motion.div>
         </div>

@@ -48,7 +48,10 @@ const Footer = () => {
               <span className="gradient-text">Joel</span>'s Portfolio
             </h3>
             <p className="text-slate-400">
-              Computer Science @ USC
+              M.S. Computer Science @ USC
+            </p>
+            <p className="text-slate-500 text-sm mt-1">
+              B.S. Computer Science @ UC Berkeley
             </p>
           </motion.div>
 
@@ -92,7 +95,7 @@ const Footer = () => {
               className="text-slate-400 hover:text-primary-400 transition flex items-center justify-center md:justify-end gap-2"
             >
               <Mail size={18} />
-              joelcast@usc.edu
+              joel.e.castro@usc.edu
             </a>
           </motion.div>
         </div>

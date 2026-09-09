@@ -400,7 +400,7 @@ const ThreeDViewer = () => {
   return (
     <div className="card-base overflow-hidden w-full">
       {/* 3D Canvas */}
-      <div className="relative aspect-video sm:aspect-[21/9] bg-gradient-to-b from-slate-800 to-slate-900">
+      <div className="relative aspect-[4/3] sm:aspect-video lg:aspect-[21/9] bg-gradient-to-b from-slate-800 to-slate-900">
         {!webGLSupported ? (
           <WebGLFallback scan={selectedScan} />
         ) : (
