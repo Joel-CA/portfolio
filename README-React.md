@@ -46,6 +46,11 @@ npm run dev
 npm run build
 ```
 
+4. Deploy got GH Pages:
+```bash
+npm run deploy
+```
+
 ## Project Structure
 
 ```
