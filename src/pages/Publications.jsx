@@ -13,16 +13,16 @@ const Publications = () => {
   }
   const publications = [
     {
-      title: 'Behavior Prompting Policy: Demonstrations as Prompts for Manipulation',
+      title: 'What Enables In-Context Behavior Prompting for Manipulation?',
       authors: 'Austin Patel, Ben Pekarek, Joel E. Castro Hernandez, Shuran Song',
-      venue: 'Conference on Robot Learning (CoRL), 2026',
+      venue: 'International Conference on Learning Representations (ICLR), 2027',
       status: 'Pre-Print',
       institution: { file: 'stanford.png', label: 'Stanford University', whiteBg: true },
       abstract: '"TL;DR: Reuse your existing robot demonstrations as in-context prompts during training. Then, at test time, you can prompt the in-context policy with a single demo to complete known or even new tasks."',
       posterImage: './assets/Posters/Teaching Robots to Write Preview.png',
       links: [
         { text: 'Website', url: 'https://behavior-prompting.github.io/', disabled: false },
-        { text: 'Paper', url: 'https://behavior-prompting.github.io/media/paper.pdf', disabled: false },
+        { text: 'Paper', url: 'https://behavior-prompting.github.io/behavior_prompting.pdf', disabled: false },
         { text: 'Code', url: 'https://github.com/real-stanford/behavior_prompting', disabled: false },
       ],
       posterLink: './assets/Posters/REAL Labs - Teaching Robots to Write (SURF & SEED versions).pdf',
